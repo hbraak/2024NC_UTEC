@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Aluminiumgewinnung — UTEC 12NC</title>
+<style>
+:root {
+  --bg: #0a0e27; --bg2: #151b3d; --bg3: #1f2654;
+  --green: #10b981; --green-l: #34d399; --green-d: #059669;
+  --orange: #f59e0b; --red: #ef4444; --blue: #3b82f6;
+  --text: #f8fafc; --text2: #cbd5e1; --muted: #94a3b8;
+  --glass: rgba(255,255,255,0.05); --glass-b: rgba(255,255,255,0.1);
+  --radius: 12px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-size: clamp(15px,2.5vw,17px); line-height:1.6;
+  color: var(--text); background: var(--bg);
+  overflow-x: hidden; padding-bottom: 72px;
+}
+/* Progress */
+.progress { position:fixed; top:0; left:0; right:0; height:4px; background:var(--bg2); z-index:200; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--green),var(--blue));
+  transition: width 0.4s; box-shadow:0 0 8px rgba(16,185,129,0.6); }
+.progress-label { position:fixed; top:10px; right:12px; font-size:0.75em; color:var(--muted); z-index:201; }
+
+/* Header */
+.header { background:linear-gradient(135deg,#0d3320,#1a4731); padding:20px 16px 16px;
+  border-bottom:3px solid var(--green); margin-top:4px; }
+.header h1 { font-size:clamp(1.3em,4vw,1.7em); color:#fff; }
+.header .sub { color:var(--green-l); font-size:0.85em; margin-top:4px; }
+
+/* Container */
+.container { max-width:600px; margin:0 auto; padding:12px; }
+
+/* Phases */
+.phase { display:none; animation: fadeIn 0.4s; }
+.phase.active { display:block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+/* Cards */
+.card { background:var(--glass); backdrop-filter:blur(12px); border:1px solid var(--glass-b);
+  border-radius:var(--radius); padding:16px; margin:12px 0; position:relative; overflow:hidden; }
+.card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,var(--green),var(--blue)); }
+.card.danger { border-color:var(--red); }
+.card.danger::before { background:var(--red); }
+.card.energy { border-color:var(--orange); }
+.card.energy::before { background:var(--orange); }
+.card.water { border-color:var(--blue); }
+.card.water::before { background:var(--blue); }
+
+.card h2 { font-size:clamp(1.15em,3vw,1.35em); color:var(--green-l); margin-bottom:10px; }
+.card h3 { font-size:1.05em; color:var(--text2); margin:12px 0 6px; }
+.card p, .card li { color:var(--text2); }
+
+/* Shock box */
+.shock { background:linear-gradient(135deg,#1a0a00,#2d1600); border:1px solid var(--orange);
+  border-radius:var(--radius); padding:14px; margin:12px 0; text-align:center; }
+.shock .emoji { font-size:1.8em; display:block; margin-bottom:6px; }
+.shock .num { font-size:1.5em; font-weight:700; color:var(--orange); }
+
+/* Quiz */
+.quiz-btn { display:block; width:100%; min-height:48px; padding:12px 16px; margin:8px 0;
+  border:2px solid var(--glass-b); border-radius:var(--radius); background:var(--glass);
+  color:var(--text); font-size:1em; cursor:pointer; transition:all 0.3s;
+  text-align:left; -webkit-tap-highlight-color:transparent; }
+.quiz-btn:active { transform:scale(0.97); }
+.quiz-btn.correct { border-color:var(--green); background:rgba(16,185,129,0.15);
+  animation: pulse-green 0.5s; }
+.quiz-btn.wrong { border-color:var(--red); background:rgba(239,68,68,0.15);
+  animation: shake 0.4s; }
+@keyframes pulse-green { 0%,100%{box-shadow:none} 50%{box-shadow:0 0 20px rgba(16,185,129,0.5)} }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+
+.feedback { padding:10px; border-radius:8px; margin:8px 0; display:none; font-size:0.9em; }
+.feedback.show { display:block; animation:fadeIn 0.3s; }
+.feedback.ok { background:rgba(16,185,129,0.15); border:1px solid var(--green); }
+.feedback.nope { background:rgba(239,68,68,0.15); border:1px solid var(--red); }
+
+/* Steps */
+.step { display:flex; gap:12px; margin:10px 0; align-items:flex-start; }
+.step-num { width:32px; height:32px; border-radius:50%; background:var(--green);
+  color:#000; font-weight:700; display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; font-size:0.9em; }
+.step-content { flex:1; }
+.step-content strong { color:var(--green-l); }
+.formula { background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.3);
+  border-radius:8px; padding:10px; margin:6px 0; font-family:monospace; font-size:0.95em;
+  text-align:center; color:var(--blue); overflow-x:auto; }
+
+/* SVG cell */
+.cell-container { width:100%; overflow-x:auto; margin:12px 0; }
+.cell-container svg { min-width:360px; max-width:100%; height:auto; }
+.cell-info { background:rgba(16,185,129,0.1); border:1px solid var(--green);
+  border-radius:8px; padding:10px; margin:8px 0; font-size:0.9em; display:none; }
+.cell-info.show { display:block; animation:fadeIn 0.3s; }
+
+/* Slider */
+.slider-group { margin:16px 0; }
+.slider-group label { display:block; color:var(--text2); margin-bottom:6px; font-size:0.9em; }
+.slider-group input[type=range] { width:100%; height:8px; -webkit-appearance:none;
+  background:var(--bg3); border-radius:4px; outline:none; }
+.slider-group input[type=range]::-webkit-slider-thumb { -webkit-appearance:none;
+  width:32px; height:32px; border-radius:50%; background:var(--green); cursor:pointer;
+  border:3px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,0.4); }
+.result-box { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:12px 0; }
+.result-item { background:var(--glass); border:1px solid var(--glass-b); border-radius:8px;
+  padding:10px; text-align:center; }
+.result-item .val { font-size:1.4em; font-weight:700; }
+.result-item .lbl { font-size:0.75em; color:var(--muted); }
+
+/* Compare bars */
+.bar-compare { margin:12px 0; }
+.bar-row { display:flex; align-items:center; gap:8px; margin:6px 0; }
+.bar-label { width:70px; font-size:0.8em; color:var(--text2); text-align:right; flex-shrink:0; }
+.bar-track { flex:1; height:24px; background:var(--bg3); border-radius:12px; overflow:hidden; }
+.bar-fill { height:100%; border-radius:12px; transition:width 0.8s ease; display:flex;
+  align-items:center; justify-content:flex-end; padding-right:8px; font-size:0.7em; font-weight:700; }
+
+/* Bottom nav */
+.bottom-nav { position:fixed; bottom:0; left:0; right:0; height:64px;
+  background:rgba(10,14,39,0.95); backdrop-filter:blur(10px);
+  border-top:1px solid var(--glass-b); display:flex; align-items:center;
+  justify-content:space-between; padding:0 16px; z-index:200; }
+.nav-btn { background:none; border:none; color:var(--muted); font-size:0.75em;
+  display:flex; flex-direction:column; align-items:center; gap:2px; cursor:pointer;
+  padding:8px 16px; min-width:60px; -webkit-tap-highlight-color:transparent; }
+.nav-btn.active { color:var(--green); }
+.nav-btn .icon { font-size:1.4em; }
+.nav-center { background:var(--green); color:#000; border:none; border-radius:50%;
+  width:48px; height:48px; font-size:1.3em; display:flex; align-items:center;
+  justify-content:center; cursor:pointer; box-shadow:0 4px 12px rgba(16,185,129,0.4);
+  margin-top:-12px; }
+
+/* Lists */
+ul.clean { list-style:none; padding:0; }
+ul.clean li { padding:6px 0; padding-left:20px; position:relative; }
+ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--green); }
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
+<div class="progress-label" id="progressLabel">1 / 5</div>
+
+<!-- Header -->
+<div class="header">
+  <h1>⚗️ Aluminiumgewinnung</h1>
+  <div class="sub">UTEC 12NC · Interaktives Lernmodul</div>
+</div>
+
+<div class="container">
+
+<!-- ===== PHASE 1: Einstieg ===== -->
+<div class="phase active" id="phase1">
+  <div class="card">
+    <h2>🔍 Aluminium in Ihrem Alltag</h2>
+    <p>Aluminium ist überall — vom Smartphone bis zur Getränkedose. Aber wissen Sie, was dahintersteckt?</p>
+  </div>
+
+  <div class="shock">
+    <span class="emoji">⚡</span>
+    <span class="num">15.000 kWh</span>
+    <p style="color:var(--orange);">Strom für <strong>1 Tonne</strong> Aluminium<br>
+    <span style="font-size:0.85em;color:var(--text2);">= Jahresverbrauch von 5 Haushalten!</span></p>
+  </div>
+
+  <div class="card">
+    <h2>🎯 Schätzfrage</h2>
+    <p>Wie viel Energie steckt in einer einzigen <strong>Aludose</strong> (15g)?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 0,5 Wh — wie eine LED für 1 Minute</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 25 Wh — wie 20 Minuten Handy laden</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">ca. 225 Wh — wie 3 Stunden Fernseher</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 2.000 Wh — wie ein Tag Kühlschrank</button>
+    <div class="feedback ok" id="fb1ok">✅ Richtig! 15g × 15 kWh/kg = 225 Wh. Genug Energie für 3 Stunden Fernsehen.</div>
+    <div class="feedback nope" id="fb1no">❌ Nicht ganz. 15g × 15 kWh/kg = 225 Wh — das entspricht 3 Stunden Fernsehen!</div>
+  </div>
+
+  <div class="card">
+    <h2>📊 Steckbrief Aluminium</h2>
+    <ul class="clean">
+      <li><strong>Dichte:</strong> 2,70 g/cm³ (Leichtmetall!)</li>
+      <li><strong>Schmelzpunkt:</strong> 660 °C</li>
+      <li><strong>Leitfähigkeit:</strong> 60% von Kupfer</li>
+      <li><strong>Erdkrustenanteil:</strong> 7,6% — häufigstes Metall</li>
+      <li><strong>Besonderheit:</strong> Selbstpassivierung (Al₂O₃-Schicht)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== PHASE 2: Bayer-Verfahren ===== -->
+<div class="phase" id="phase2">
+  <div class="card">
+    <h2>🏭 Bayer-Verfahren</h2>
+    <p><strong>Ziel:</strong> Reines Aluminiumoxid (Al₂O₃) aus Bauxit gewinnen</p>
+  </div>
+
+  <div class="shock">
+    <span class="emoji">🪨</span>
+    <span class="num">4 Tonnen Bauxit</span>
+    <p style="color:var(--orange);">→ nur <strong>1 Tonne</strong> Al₂O₃<br>
+    <span style="font-size:0.85em;color:var(--text2);">Der Rest? Giftiger Rotschlamm.</span></p>
+  </div>
+
+  <div class="card">
+    <h2>📋 Die 4 Schritte</h2>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Aufschluss</strong> — Bauxit + heiße NaOH (200°C, 7 bar)
+        <div class="formula">Al(OH)₃ + NaOH → Na[Al(OH)₄]</div>
+        <p style="font-size:0.85em;">Aluminium löst sich, Eisen bleibt zurück.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Klärung</strong> — Rotschlamm wird abgetrennt
+        <p style="font-size:0.85em;color:var(--red);">⚠️ 1,6 – 3,7 t Rotschlamm pro Tonne Al!</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Fällung</strong> — Abkühlen, Al(OH)₃ fällt aus
+        <div class="formula">Na[Al(OH)₄] → Al(OH)₃↓ + NaOH</div>
+        <p style="font-size:0.85em;">NaOH wird zurückgewonnen (Kreislauf).</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Kalzinierung</strong> — Erhitzen auf 1200°C
+        <div class="formula">2 Al(OH)₃ → Al₂O₃ + 3 H₂O</div>
+        <p style="font-size:0.85em;">Weißes Pulver: reine Tonerde.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card danger">
+    <h2>☠️ Rotschlamm — das Problem</h2>
+    <ul class="clean">
+      <li>Stark alkalisch (pH &gt; 12), giftig</li>
+      <li>Weltweit &gt; <strong>4 Milliarden Tonnen</strong> in Deponien</li>
+      <li><strong>2010 Ajka (Ungarn):</strong> Dammbruch — 1 Mio. m³ Giftschlamm, 10 Tote</li>
+      <li>Enthält Schwermetalle und radioaktive Elemente</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Check: Reaktionsgleichung</h2>
+    <p>Welche Reaktion beschreibt die <strong>Kalzinierung</strong>?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Al₂O₃ + 3 C → 2 Al + 3 CO</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">2 Al(OH)₃ → Al₂O₃ + 3 H₂O</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Al(OH)₃ + NaOH → Na[Al(OH)₄]</button>
+    <div class="feedback ok" id="fb2ok">✅ Genau! Durch Erhitzen auf 1200°C wird Wasser abgespalten und reines Al₂O₃ entsteht.</div>
+    <div class="feedback nope" id="fb2no">❌ Das ist nicht die Kalzinierung. Bei 1200°C wird Al(OH)₃ entwässert: 2 Al(OH)₃ → Al₂O₃ + 3 H₂O</div>
+  </div>
+</div>
+
+<!-- ===== PHASE 3: Schmelzflusselektrolyse ===== -->
+<div class="phase" id="phase3">
+  <div class="card">
+    <h2>⚡ Schmelzflusselektrolyse</h2>
+    <p><strong>Ziel:</strong> Aus Al₂O₃ wird metallisches Aluminium</p>
+    <p style="font-size:0.85em;">Warum nicht aus wässriger Lösung? Aluminium ist so unedel, dass statt Al nur H₂ entstehen würde!</p>
+  </div>
+
+  <div class="shock">
+    <span class="emoji">🔥</span>
+    <span class="num">960°C</span>
+    <p style="color:var(--orange);">Heißer als Lava!<br>
+    <span style="font-size:0.85em;color:var(--text2);">Na₃AlF₆ (Kryolith) senkt den Schmelzpunkt von 2050°C auf 960°C</span></p>
+  </div>
+
+  <div class="card water">
+    <h2>🔬 Elektrolysezelle — Tippen Sie auf die Bauteile!</h2>
+    <div class="cell-container">
+      <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+        <!-- Wanne (Kathode) -->
+        <rect x="30" y="100" width="340" height="120" rx="6" fill="#2a2a2a" stroke="#555" stroke-width="4"
+          onclick="showCellInfo('kathode')" style="cursor:pointer"/>
+        <!-- Graphit-Auskleidung -->
+        <rect x="36" y="106" width="328" height="8" fill="#1a1a1a" opacity="0.8"/>
+        <!-- Flüssiges Aluminium -->
+        <rect x="40" y="190" width="320" height="24" rx="4" fill="#b0b0b0"
+          onclick="showCellInfo('aluminium')" style="cursor:pointer">
+          <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+        </rect>
+        <!-- Elektrolyt/Schmelze -->
+        <rect x="40" y="118" width="320" height="72" rx="2" fill="#e8d88c" opacity="0.7"
+          onclick="showCellInfo('schmelze')" style="cursor:pointer"/>
+        <text x="200" y="158" text-anchor="middle" font-size="11" fill="#333" font-weight="600">Al₂O₃ in Na₃AlF₆</text>
+        <!-- Anoden -->
+        <rect x="80" y="20" width="28" height="110" rx="3" fill="#3a3a3a" stroke="#555" stroke-width="2"
+          onclick="showCellInfo('anode')" style="cursor:pointer"/>
+        <rect x="160" y="20" width="28" height="110" rx="3" fill="#3a3a3a" stroke="#555" stroke-width="2"
+          onclick="showCellInfo('anode')" style="cursor:pointer"/>
+        <rect x="240" y="20" width="28" height="110" rx="3" fill="#3a3a3a" stroke="#555" stroke-width="2"
+          onclick="showCellInfo('anode')" style="cursor:pointer"/>
+        <rect x="300" y="20" width="28" height="110" rx="3" fill="#3a3a3a" stroke="#555" stroke-width="2"
+          onclick="showCellInfo('anode')" style="cursor:pointer"/>
+        <!-- Sammelschiene + -->
+        <rect x="60" y="8" width="290" height="14" rx="4" fill="#e05555"/>
+        <text x="205" y="18" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">+ Anode</text>
+        <!-- Kathode-Schiene - -->
+        <rect x="150" y="226" width="100" height="12" rx="3" fill="#5577ee"/>
+        <text x="200" y="250" text-anchor="middle" font-size="9" fill="#8899ff" font-weight="600">− Kathode</text>
+        <!-- Gasblasen -->
+        <circle cx="94" cy="125" r="4" fill="rgba(255,255,255,0.5)"
+          onclick="showCellInfo('gas')" style="cursor:pointer">
+          <animate attributeName="cy" values="125;50;125" dur="2.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="174" cy="130" r="3" fill="rgba(255,255,255,0.4)">
+          <animate attributeName="cy" values="130;55;130" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="254" cy="122" r="5" fill="rgba(255,255,255,0.5)">
+          <animate attributeName="cy" values="122;45;122" dur="2.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="314" cy="128" r="3.5" fill="rgba(255,255,255,0.4)">
+          <animate attributeName="cy" values="128;52;128" dur="3.2s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Labels -->
+        <text x="200" y="206" text-anchor="middle" font-size="9" fill="#ddd">Flüssiges Al ↓</text>
+        <text x="45" y="45" font-size="8" fill="#ccc">O₂/CO₂ ↑</text>
+      </svg>
+    </div>
+
+    <div class="cell-info" id="info-anode">
+      <strong style="color:var(--red);">⊕ Graphit-Anode:</strong> Hier entsteht Sauerstoff, der den Kohlenstoff verbrennt:
+      <div class="formula">C + O²⁻ → CO₂ + 4e⁻</div>
+      Die Anoden verbrauchen sich und müssen regelmäßig ersetzt werden.
+    </div>
+    <div class="cell-info" id="info-kathode">
+      <strong style="color:var(--blue);">⊖ Kathode (Wannenboden):</strong> Hier wird Al³⁺ reduziert:
+      <div class="formula">Al³⁺ + 3e⁻ → Al</div>
+      Flüssiges Aluminium sammelt sich am Boden.
+    </div>
+    <div class="cell-info" id="info-schmelze">
+      <strong style="color:var(--orange);">Schmelze:</strong> Al₂O₃ gelöst in Na₃AlF₆ (Kryolith) bei 960°C. Kryolith senkt den Schmelzpunkt von 2050°C drastisch ab.
+    </div>
+    <div class="cell-info" id="info-aluminium">
+      <strong style="color:var(--text);">Flüssiges Aluminium:</strong> Sammelt sich aufgrund seiner höheren Dichte am Wannenboden und wird regelmäßig abgesaugt. Reinheit: bis 99,9%.
+    </div>
+    <div class="cell-info" id="info-gas">
+      <strong style="color:var(--muted);">Gasabzug:</strong> O₂ und CO₂ entstehen an der Anode. Außerdem aggressive Fluorverbindungen — müssen aufgefangen werden!
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>⚡ Gesamtreaktion</h2>
+    <div class="formula" style="font-size:1.1em;">2 Al₂O₃ → 4 Al + 3 O₂</div>
+    <p style="margin-top:8px;">Spannung: 5–6 V &nbsp;|&nbsp; Stromstärke: <strong>150.000 A</strong></p>
+    <p style="font-size:0.85em;color:var(--muted);">Zum Vergleich: Ihre Haussicherung hat 16 A.</p>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Check: Warum Kryolith?</h2>
+    <p>Warum wird Na₃AlF₆ zur Schmelze hinzugefügt?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Es liefert zusätzliches Aluminium</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">Es senkt den Schmelzpunkt von 2050°C auf ~960°C</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Es verhindert die Oxidation des Aluminiums</button>
+    <div class="feedback ok" id="fb3ok">✅ Korrekt! Ohne Kryolith müsste man Al₂O₃ auf über 2050°C erhitzen — technisch und energetisch kaum machbar.</div>
+    <div class="feedback nope" id="fb3no">❌ Nicht ganz. Kryolith ist ein Flussmittel: Es senkt den Schmelzpunkt von 2050°C auf ca. 960°C.</div>
+  </div>
+</div>
+
+<!-- ===== PHASE 4: Energiebilanz ===== -->
+<div class="phase" id="phase4">
+  <div class="card energy">
+    <h2>💰 Der wahre Preis</h2>
+    <p>Berechnen Sie selbst: Was kostet die Herstellung von Aluminium?</p>
+  </div>
+
+  <div class="card">
+    <h2>⚡ Energierechner</h2>
+    <div class="slider-group">
+      <label>Aluminium-Menge: <strong id="massVal">100</strong> kg</label>
+      <input type="range" min="1" max="1000" value="100" id="massSlider" oninput="updateCalc()">
+    </div>
+    <div class="slider-group">
+      <label>Strompreis: <strong id="priceVal">0,30</strong> €/kWh</label>
+      <input type="range" min="0.02" max="0.40" step="0.01" value="0.30" id="priceSlider" oninput="updateCalc()">
+    </div>
+
+    <div class="result-box">
+      <div class="result-item">
+        <div class="val" style="color:var(--orange)" id="resKwh">1.500</div>
+        <div class="lbl">kWh Strom</div>
+      </div>
+      <div class="result-item">
+        <div class="val" style="color:var(--red)" id="resCost">450 €</div>
+        <div class="lbl">Stromkosten</div>
+      </div>
+      <div class="result-item">
+        <div class="val" style="color:var(--muted)" id="resCo2">1.200</div>
+        <div class="lbl">kg CO₂ (Kohle)</div>
+      </div>
+      <div class="result-item">
+        <div class="val" style="color:var(--green)" id="resHH">0,5</div>
+        <div class="lbl">Haushalte/Jahr</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>♻️ Primär vs. Recycling</h2>
+    <div class="bar-compare">
+      <p style="font-size:0.85em;margin-bottom:8px;"><strong>Energieverbrauch pro Tonne:</strong></p>
+      <div class="bar-row">
+        <div class="bar-label">Primär</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:100%;background:var(--red);color:#fff;">15.000 kWh</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Recycling</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:5%;background:var(--green);min-width:70px;color:#fff;">750 kWh</div>
+        </div>
+      </div>
+    </div>
+    <div class="shock" style="background:linear-gradient(135deg,#0a2010,#0d3320);border-color:var(--green);">
+      <span class="emoji">♻️</span>
+      <span class="num" style="color:var(--green);">95% Energieersparnis</span>
+      <p style="color:var(--green-l);">beim Recycling von Aluminium!</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🌍 Standortfrage</h2>
+    <p>Warum stehen Aluminium-Hütten in <strong>Island</strong> und <strong>Norwegen</strong>?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Weil dort Bauxit abgebaut wird</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">Weil Strom aus Wasserkraft/Geothermie billig ist</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Weil die Nachfrage dort am größten ist</button>
+    <div class="feedback ok" id="fb4ok">✅ Genau! Es lohnt sich sogar, Bauxit aus Brasilien nach Island zu verschiffen — der billige Strom macht's möglich.</div>
+    <div class="feedback nope" id="fb4no">❌ Es geht um den Strompreis! Erneuerbare Energie in Island/Norwegen ist so billig, dass man Bauxit um die halbe Welt transportiert.</div>
+  </div>
+</div>
+
+<!-- ===== PHASE 5: Reflexion ===== -->
+<div class="phase" id="phase5">
+  <div class="card">
+    <h2>🤔 Ihre Bewertung</h2>
+    <p><em>„Aluminium ist ein Werkstoff mit glänzenden Eigenschaften, aber einem langen Schatten."</em></p>
+    <p>Stimmen Sie zu?</p>
+  </div>
+
+  <div class="card" style="border-color:var(--green);">
+    <h3>✅ Vorteile</h3>
+    <ul class="clean">
+      <li>Leicht (2,7 g/cm³) → Treibstoffersparnis im Verkehr</li>
+      <li>Korrosionsbeständig (Selbstpassivierung)</li>
+      <li>Guter Leiter (Strom + Wärme)</li>
+      <li>Sehr gut recycelbar (fast ohne Qualitätsverlust)</li>
+      <li>Häufigstes Metall der Erdkruste</li>
+    </ul>
+  </div>
+
+  <div class="card danger">
+    <h3>❌ Nachteile</h3>
+    <ul class="clean">
+      <li>Enormer Energieverbrauch (15.000 kWh/t)</li>
+      <li>Rotschlamm: giftig, radioaktiv, riesige Mengen</li>
+      <li>Regenwald-Zerstörung beim Bauxit-Abbau</li>
+      <li>Fluoremissionen bei der Elektrolyse</li>
+      <li>CO₂: 8–16 t pro Tonne Al (je nach Strommix)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>💡 Was können Sie tun?</h2>
+    <ul class="clean">
+      <li><strong>Recyceln:</strong> Aludosen in die Gelbe Tonne!</li>
+      <li><strong>Vermeiden:</strong> Alufolie → Bienenwachstuch</li>
+      <li><strong>Hinterfragen:</strong> Braucht das Produkt wirklich Aluminium?</li>
+      <li><strong>Wissen:</strong> Recycling spart 95% Energie</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>📝 Abschlussaufgabe</h2>
+    <p>Beurteilen Sie: Ist Aluminium ein <strong>nachhaltiger Werkstoff</strong>?</p>
+    <p style="font-size:0.85em;color:var(--muted);">Formulieren Sie mindestens 3 Argumente (Pro + Contra) und eine begründete Schlussfolgerung.</p>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+  <button class="nav-btn active" onclick="goPhase(1)" id="nb1"><span class="icon">🔍</span>Start</button>
+  <button class="nav-btn" onclick="goPhase(2)" id="nb2"><span class="icon">🏭</span>Bayer</button>
+  <button class="nav-btn" onclick="goPhase(3)" id="nb3"><span class="icon">⚡</span>Elektro</button>
+  <button class="nav-btn" onclick="goPhase(4)" id="nb4"><span class="icon">💰</span>Energie</button>
+  <button class="nav-btn" onclick="goPhase(5)" id="nb5"><span class="icon">🤔</span>Fazit</button>
+</div>
+
+<script>
+let current = 1;
+const total = 5;
+
+function goPhase(n) {
+  document.querySelectorAll('.phase').forEach(p => p.classList.remove('active'));
+  document.getElementById('phase'+n).classList.add('active');
+  document.getElementById('progressFill').style.width = (n/total*100)+'%';
+  document.getElementById('progressLabel').textContent = n+' / '+total;
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('nb'+n).classList.add('active');
+  current = n;
+  window.scrollTo(0,0);
+}
+
+// Swipe
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 60) {
+    if (diff > 0 && current < total) goPhase(current+1);
+    if (diff < 0 && current > 1) goPhase(current-1);
+  }
+});
+
+// Quiz
+function checkQuiz(btn, correct) {
+  const card = btn.closest('.card');
+  card.querySelectorAll('.quiz-btn').forEach(b => { b.disabled=true; b.style.opacity='0.5'; });
+  btn.style.opacity = '1';
+  btn.classList.add(correct ? 'correct' : 'wrong');
+  const fbs = card.querySelectorAll('.feedback');
+  fbs.forEach(f => {
+    if ((correct && f.classList.contains('ok')) || (!correct && f.classList.contains('nope')))
+      f.classList.add('show');
+  });
+}
+
+// Elektrolysezelle Info
+function showCellInfo(part) {
+  document.querySelectorAll('.cell-info').forEach(i => i.classList.remove('show'));
+  const el = document.getElementById('info-'+part);
+  if (el) el.classList.add('show');
+}
+
+// Energierechner
+function updateCalc() {
+  const mass = parseFloat(document.getElementById('massSlider').value);
+  const price = parseFloat(document.getElementById('priceSlider').value);
+  const kwh = mass * 15; // 15 kWh/kg
+  const cost = kwh * price;
+  const co2 = mass * 12; // ~12 kg CO₂/kg Al (Kohlestrom)
+  const hh = kwh / 3000; // 3000 kWh/Haushalt/Jahr
+  document.getElementById('massVal').textContent = mass;
+  document.getElementById('priceVal').textContent = price.toFixed(2);
+  document.getElementById('resKwh').textContent = kwh.toLocaleString('de-DE');
+  document.getElementById('resCost').textContent = cost.toLocaleString('de-DE',{maximumFractionDigits:0})+' €';
+  document.getElementById('resCo2').textContent = co2.toLocaleString('de-DE',{maximumFractionDigits:0});
+  document.getElementById('resHH').textContent = hh.toLocaleString('de-DE',{maximumFractionDigits:1});
+}
+updateCalc();
+</script>
+</body>
+</html>
