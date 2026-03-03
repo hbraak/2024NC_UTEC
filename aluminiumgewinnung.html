@@ -6,11 +6,11 @@
 <title>Aluminiumgewinnung — UTEC 12NC</title>
 <style>
 :root {
-  --bg: #0a0e27; --bg2: #151b3d; --bg3: #1f2654;
-  --green: #10b981; --green-l: #34d399; --green-d: #059669;
-  --orange: #f59e0b; --red: #ef4444; --blue: #3b82f6;
-  --text: #f8fafc; --text2: #cbd5e1; --muted: #94a3b8;
-  --glass: rgba(255,255,255,0.05); --glass-b: rgba(255,255,255,0.1);
+  --bg: #f5f7fa; --bg2: #e8ecf1; --bg3: #dde2e8;
+  --green: #0d9668; --green-l: #0a7d56; --green-d: #087a52;
+  --orange: #c47a09; --red: #dc2626; --blue: #2563eb;
+  --text: #1e293b; --text2: #334155; --muted: #64748b;
+  --glass: rgba(255,255,255,0.7); --glass-b: rgba(0,0,0,0.08);
   --radius: 12px;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -23,14 +23,15 @@ body {
 /* Progress */
 .progress { position:fixed; top:0; left:0; right:0; height:4px; background:var(--bg2); z-index:200; }
 .progress-fill { height:100%; background:linear-gradient(90deg,var(--green),var(--blue));
-  transition: width 0.4s; box-shadow:0 0 8px rgba(16,185,129,0.6); }
-.progress-label { position:fixed; top:10px; right:12px; font-size:0.75em; color:var(--muted); z-index:201; }
+  transition: width 0.4s; }
+.progress-label { position:fixed; top:10px; right:12px; font-size:0.75em; color:var(--muted); z-index:201;
+  background:rgba(255,255,255,0.8); padding:2px 8px; border-radius:10px; }
 
 /* Header */
-.header { background:linear-gradient(135deg,#0d3320,#1a4731); padding:20px 16px 16px;
+.header { background:linear-gradient(135deg,#0d7a52,#0a5c3e); padding:20px 16px 16px;
   border-bottom:3px solid var(--green); margin-top:4px; }
 .header h1 { font-size:clamp(1.3em,4vw,1.7em); color:#fff; }
-.header .sub { color:var(--green-l); font-size:0.85em; margin-top:4px; }
+.header .sub { color:#a7f3d0; font-size:0.85em; margin-top:4px; }
 
 /* Container */
 .container { max-width:600px; margin:0 auto; padding:12px; }
@@ -42,60 +43,62 @@ body {
 
 /* Cards */
 .card { background:var(--glass); backdrop-filter:blur(12px); border:1px solid var(--glass-b);
-  border-radius:var(--radius); padding:16px; margin:12px 0; position:relative; overflow:hidden; }
-.card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  border-radius:var(--radius); padding:16px; margin:12px 0; position:relative; overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+.card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px;
   background:linear-gradient(90deg,var(--green),var(--blue)); }
-.card.danger { border-color:var(--red); }
+.card.danger { border-color:var(--red); border-left:4px solid var(--red); }
 .card.danger::before { background:var(--red); }
-.card.energy { border-color:var(--orange); }
+.card.energy { border-color:var(--orange); border-left:4px solid var(--orange); }
 .card.energy::before { background:var(--orange); }
-.card.water { border-color:var(--blue); }
+.card.water { border-color:var(--blue); border-left:4px solid var(--blue); }
 .card.water::before { background:var(--blue); }
 
-.card h2 { font-size:clamp(1.15em,3vw,1.35em); color:var(--green-l); margin-bottom:10px; }
-.card h3 { font-size:1.05em; color:var(--text2); margin:12px 0 6px; }
+.card h2 { font-size:clamp(1.15em,3vw,1.35em); color:var(--green); margin-bottom:10px; }
+.card h3 { font-size:1.05em; color:var(--text); margin:12px 0 6px; }
 .card p, .card li { color:var(--text2); }
 
 /* Shock box */
-.shock { background:linear-gradient(135deg,#1a0a00,#2d1600); border:1px solid var(--orange);
+.shock { background:linear-gradient(135deg,#fffbeb,#fef3c7); border:1px solid #f59e0b;
   border-radius:var(--radius); padding:14px; margin:12px 0; text-align:center; }
 .shock .emoji { font-size:1.8em; display:block; margin-bottom:6px; }
 .shock .num { font-size:1.5em; font-weight:700; color:var(--orange); }
 
 /* Quiz */
 .quiz-btn { display:block; width:100%; min-height:48px; padding:12px 16px; margin:8px 0;
-  border:2px solid var(--glass-b); border-radius:var(--radius); background:var(--glass);
+  border:2px solid var(--bg3); border-radius:var(--radius); background:#fff;
   color:var(--text); font-size:1em; cursor:pointer; transition:all 0.3s;
   text-align:left; -webkit-tap-highlight-color:transparent; }
 .quiz-btn:active { transform:scale(0.97); }
-.quiz-btn.correct { border-color:var(--green); background:rgba(16,185,129,0.15);
+.quiz-btn.correct { border-color:var(--green); background:#ecfdf5;
   animation: pulse-green 0.5s; }
-.quiz-btn.wrong { border-color:var(--red); background:rgba(239,68,68,0.15);
+.quiz-btn.wrong { border-color:var(--red); background:#fef2f2;
   animation: shake 0.4s; }
-@keyframes pulse-green { 0%,100%{box-shadow:none} 50%{box-shadow:0 0 20px rgba(16,185,129,0.5)} }
+@keyframes pulse-green { 0%,100%{box-shadow:none} 50%{box-shadow:0 0 15px rgba(13,150,104,0.3)} }
 @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
 
 .feedback { padding:10px; border-radius:8px; margin:8px 0; display:none; font-size:0.9em; }
 .feedback.show { display:block; animation:fadeIn 0.3s; }
-.feedback.ok { background:rgba(16,185,129,0.15); border:1px solid var(--green); }
-.feedback.nope { background:rgba(239,68,68,0.15); border:1px solid var(--red); }
+.feedback.ok { background:#ecfdf5; border:1px solid var(--green); color:#065f46; }
+.feedback.nope { background:#fef2f2; border:1px solid var(--red); color:#991b1b; }
 
 /* Steps */
 .step { display:flex; gap:12px; margin:10px 0; align-items:flex-start; }
 .step-num { width:32px; height:32px; border-radius:50%; background:var(--green);
-  color:#000; font-weight:700; display:flex; align-items:center; justify-content:center;
+  color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center;
   flex-shrink:0; font-size:0.9em; }
 .step-content { flex:1; }
-.step-content strong { color:var(--green-l); }
-.formula { background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.3);
-  border-radius:8px; padding:10px; margin:6px 0; font-family:monospace; font-size:0.95em;
+.step-content strong { color:var(--green); }
+.formula { background:#eff6ff; border:1px solid #bfdbfe;
+  border-radius:8px; padding:10px; margin:6px 0; font-family:'SF Mono',Menlo,monospace; font-size:0.95em;
   text-align:center; color:var(--blue); overflow-x:auto; }
 
 /* SVG cell */
-.cell-container { width:100%; overflow-x:auto; margin:12px 0; }
+.cell-container { width:100%; overflow-x:auto; margin:12px 0; background:#f8fafc;
+  border-radius:8px; padding:8px; }
 .cell-container svg { min-width:360px; max-width:100%; height:auto; }
-.cell-info { background:rgba(16,185,129,0.1); border:1px solid var(--green);
-  border-radius:8px; padding:10px; margin:8px 0; font-size:0.9em; display:none; }
+.cell-info { background:#ecfdf5; border:1px solid var(--green);
+  border-radius:8px; padding:10px; margin:8px 0; font-size:0.9em; display:none; color:#065f46; }
 .cell-info.show { display:block; animation:fadeIn 0.3s; }
 
 /* Slider */
@@ -105,10 +108,10 @@ body {
   background:var(--bg3); border-radius:4px; outline:none; }
 .slider-group input[type=range]::-webkit-slider-thumb { -webkit-appearance:none;
   width:32px; height:32px; border-radius:50%; background:var(--green); cursor:pointer;
-  border:3px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,0.4); }
+  border:3px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,0.2); }
 .result-box { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:12px 0; }
-.result-item { background:var(--glass); border:1px solid var(--glass-b); border-radius:8px;
-  padding:10px; text-align:center; }
+.result-item { background:#fff; border:1px solid var(--bg3); border-radius:8px;
+  padding:10px; text-align:center; box-shadow:0 1px 2px rgba(0,0,0,0.05); }
 .result-item .val { font-size:1.4em; font-weight:700; }
 .result-item .lbl { font-size:0.75em; color:var(--muted); }
 
@@ -118,22 +121,18 @@ body {
 .bar-label { width:70px; font-size:0.8em; color:var(--text2); text-align:right; flex-shrink:0; }
 .bar-track { flex:1; height:24px; background:var(--bg3); border-radius:12px; overflow:hidden; }
 .bar-fill { height:100%; border-radius:12px; transition:width 0.8s ease; display:flex;
-  align-items:center; justify-content:flex-end; padding-right:8px; font-size:0.7em; font-weight:700; }
+  align-items:center; justify-content:flex-end; padding-right:8px; font-size:0.7em; font-weight:700; color:#fff; }
 
 /* Bottom nav */
 .bottom-nav { position:fixed; bottom:0; left:0; right:0; height:64px;
-  background:rgba(10,14,39,0.95); backdrop-filter:blur(10px);
-  border-top:1px solid var(--glass-b); display:flex; align-items:center;
+  background:rgba(255,255,255,0.95); backdrop-filter:blur(10px);
+  border-top:1px solid var(--bg3); display:flex; align-items:center;
   justify-content:space-between; padding:0 16px; z-index:200; }
 .nav-btn { background:none; border:none; color:var(--muted); font-size:0.75em;
   display:flex; flex-direction:column; align-items:center; gap:2px; cursor:pointer;
   padding:8px 16px; min-width:60px; -webkit-tap-highlight-color:transparent; }
-.nav-btn.active { color:var(--green); }
+.nav-btn.active { color:var(--green); font-weight:600; }
 .nav-btn .icon { font-size:1.4em; }
-.nav-center { background:var(--green); color:#000; border:none; border-radius:50%;
-  width:48px; height:48px; font-size:1.3em; display:flex; align-items:center;
-  justify-content:center; cursor:pointer; box-shadow:0 4px 12px rgba(16,185,129,0.4);
-  margin-top:-12px; }
 
 /* Lists */
 ul.clean { list-style:none; padding:0; }
@@ -165,8 +164,8 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
   <div class="shock">
     <span class="emoji">⚡</span>
     <span class="num">15.000 kWh</span>
-    <p style="color:var(--orange);">Strom für <strong>1 Tonne</strong> Aluminium<br>
-    <span style="font-size:0.85em;color:var(--text2);">= Jahresverbrauch von 5 Haushalten!</span></p>
+    <p style="color:#92400e;">Strom für <strong>1 Tonne</strong> Aluminium<br>
+    <span style="font-size:0.85em;color:#78716c;">= Jahresverbrauch von 5 Haushalten!</span></p>
   </div>
 
   <div class="card">
@@ -202,8 +201,8 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
   <div class="shock">
     <span class="emoji">🪨</span>
     <span class="num">4 Tonnen Bauxit</span>
-    <p style="color:var(--orange);">→ nur <strong>1 Tonne</strong> Al₂O₃<br>
-    <span style="font-size:0.85em;color:var(--text2);">Der Rest? Giftiger Rotschlamm.</span></p>
+    <p style="color:#92400e;">→ nur <strong>1 Tonne</strong> Al₂O₃<br>
+    <span style="font-size:0.85em;color:#78716c;">Der Rest? Giftiger Rotschlamm.</span></p>
   </div>
 
   <div class="card">
@@ -277,8 +276,8 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
   <div class="shock">
     <span class="emoji">🔥</span>
     <span class="num">960°C</span>
-    <p style="color:var(--orange);">Heißer als Lava!<br>
-    <span style="font-size:0.85em;color:var(--text2);">Na₃AlF₆ (Kryolith) senkt den Schmelzpunkt von 2050°C auf 960°C</span></p>
+    <p style="color:#92400e;">Heißer als Lava!<br>
+    <span style="font-size:0.85em;color:#78716c;">Na₃AlF₆ (Kryolith) senkt den Schmelzpunkt von 2050°C auf 960°C</span></p>
   </div>
 
   <div class="card water">
@@ -298,7 +297,7 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
         <!-- Elektrolyt/Schmelze -->
         <rect x="40" y="118" width="320" height="72" rx="2" fill="#e8d88c" opacity="0.7"
           onclick="showCellInfo('schmelze')" style="cursor:pointer"/>
-        <text x="200" y="158" text-anchor="middle" font-size="11" fill="#333" font-weight="600">Al₂O₃ in Na₃AlF₆</text>
+        <text x="200" y="158" text-anchor="middle" font-size="11" fill="#1e293b" font-weight="600">Al₂O₃ in Na₃AlF₆</text>
         <!-- Anoden -->
         <rect x="80" y="20" width="28" height="110" rx="3" fill="#3a3a3a" stroke="#555" stroke-width="2"
           onclick="showCellInfo('anode')" style="cursor:pointer"/>
@@ -329,8 +328,8 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
           <animate attributeName="cy" values="128;52;128" dur="3.2s" repeatCount="indefinite"/>
         </circle>
         <!-- Labels -->
-        <text x="200" y="206" text-anchor="middle" font-size="9" fill="#ddd">Flüssiges Al ↓</text>
-        <text x="45" y="45" font-size="8" fill="#ccc">O₂/CO₂ ↑</text>
+        <text x="200" y="206" text-anchor="middle" font-size="9" fill="#555">Flüssiges Al ↓</text>
+        <text x="45" y="45" font-size="8" fill="#555">O₂/CO₂ ↑</text>
       </svg>
     </div>
 
@@ -428,10 +427,10 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
         </div>
       </div>
     </div>
-    <div class="shock" style="background:linear-gradient(135deg,#0a2010,#0d3320);border-color:var(--green);">
+    <div class="shock" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-color:var(--green);">
       <span class="emoji">♻️</span>
       <span class="num" style="color:var(--green);">95% Energieersparnis</span>
-      <p style="color:var(--green-l);">beim Recycling von Aluminium!</p>
+      <p style="color:#065f46;">beim Recycling von Aluminium!</p>
     </div>
   </div>
 
