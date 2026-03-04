@@ -353,15 +353,26 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
           onclick="showCellInfo('gas')" style="cursor:pointer">CO + CO₂ ↑</text>
         <line x1="370" y1="88" x2="370" y2="76" stroke="#999" stroke-width="2.5" marker-end="url(#arrowW)"/>
 
-        <!-- Gasblasen animiert -->
-        <circle cx="152" cy="160" r="4" fill="rgba(255,255,255,0.5)">
-          <animate attributeName="cy" values="160;85;160" dur="2.5s" repeatCount="indefinite"/>
+        <!-- Gasblasen animiert (steigen auf, erscheinen unten neu) -->
+        <circle cx="152" r="4" fill="rgba(255,255,255,0.5)">
+          <animate attributeName="cy" values="165;75" dur="2.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.6;0.5;0.3;0" dur="2.5s" repeatCount="indefinite"/>
         </circle>
-        <circle cx="242" cy="165" r="5" fill="rgba(255,255,255,0.4)">
-          <animate attributeName="cy" values="165;80;165" dur="3s" repeatCount="indefinite"/>
+        <circle cx="200" r="3" fill="rgba(255,255,255,0.4)">
+          <animate attributeName="cy" values="162;70" dur="2.8s" repeatCount="indefinite" begin="0.8s"/>
+          <animate attributeName="opacity" values="0.5;0.4;0.2;0" dur="2.8s" repeatCount="indefinite" begin="0.8s"/>
         </circle>
-        <circle cx="332" cy="158" r="4" fill="rgba(255,255,255,0.5)">
-          <animate attributeName="cy" values="158;82;158" dur="2.8s" repeatCount="indefinite"/>
+        <circle cx="242" r="5" fill="rgba(255,255,255,0.4)">
+          <animate attributeName="cy" values="168;72" dur="3s" repeatCount="indefinite" begin="0.4s"/>
+          <animate attributeName="opacity" values="0.6;0.5;0.3;0" dur="3s" repeatCount="indefinite" begin="0.4s"/>
+        </circle>
+        <circle cx="290" r="3" fill="rgba(255,255,255,0.5)">
+          <animate attributeName="cy" values="160;68" dur="2.6s" repeatCount="indefinite" begin="1.2s"/>
+          <animate attributeName="opacity" values="0.5;0.4;0.2;0" dur="2.6s" repeatCount="indefinite" begin="1.2s"/>
+        </circle>
+        <circle cx="332" r="4" fill="rgba(255,255,255,0.5)">
+          <animate attributeName="cy" values="163;74" dur="2.7s" repeatCount="indefinite" begin="0.6s"/>
+          <animate attributeName="opacity" values="0.6;0.5;0.3;0" dur="2.7s" repeatCount="indefinite" begin="0.6s"/>
         </circle>
 
         <!-- ===== Al-Abstich (unten links) ===== -->
