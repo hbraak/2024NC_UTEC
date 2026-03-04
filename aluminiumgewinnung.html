@@ -232,46 +232,73 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
-        <strong>Aufschluss</strong> — Bauxit + heiße NaOH (200°C, 7 bar)
+        <strong>Aufschluss</strong> — Bauxit wird in heißer Natronlauge gelöst
+        <p style="font-size:0.88em; margin:6px 0;">Das zerkleinerte Bauxit wird mit <strong>42 %-iger NaOH</strong> bei <strong>200 °C</strong> und <strong>7 bar</strong> Druck behandelt. Dabei löst sich das Aluminiumhydroxid — die Eisenoxide und andere Verunreinigungen bleiben ungelöst zurück.</p>
         <div class="formula">Al(OH)₃ + NaOH → Na[Al(OH)₄]</div>
-        <p style="font-size:0.85em;">Aluminium löst sich, Eisen bleibt zurück.</p>
+        <p style="font-size:0.85em; color:#555;">💡 <em>Aluminium ist amphoter — es löst sich sowohl in Säuren als auch in Laugen. Das nutzt man hier aus!</em></p>
       </div>
     </div>
 
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-content">
-        <strong>Klärung</strong> — Rotschlamm wird abgetrennt
-        <p style="font-size:0.85em;color:var(--red);">⚠️ 1,6 – 3,7 t Rotschlamm pro Tonne Al!</p>
+        <strong>Klärung</strong> — Abtrennung des Rotschlamms
+        <p style="font-size:0.88em; margin:6px 0;">Die Lösung wird filtriert. Das gelöste Natriumaluminat Na[Al(OH)₄] geht durch — die unlöslichen Rückstände (Eisenoxide, Titanoxid, Silikate) bleiben als <strong style="color:var(--red);">Rotschlamm</strong> zurück.</p>
+        <p style="font-size:0.85em;color:var(--red);">⚠️ Pro Tonne Aluminium fallen <strong>1,6 – 3,7 t</strong> giftiger Rotschlamm an!</p>
       </div>
     </div>
 
     <div class="step">
       <div class="step-num">3</div>
       <div class="step-content">
-        <strong>Fällung</strong> — Abkühlen, Al(OH)₃ fällt aus
+        <strong>Fällung</strong> — Aluminiumhydroxid kristallisiert aus
+        <p style="font-size:0.88em; margin:6px 0;">Die klare Aluminat-Lösung wird <strong>abgekühlt und verdünnt</strong>. Dabei verschiebt sich das chemische Gleichgewicht — Al(OH)₃ fällt als weißer Feststoff aus. Man gibt Impfkristalle zu, um die Kristallisation zu beschleunigen.</p>
         <div class="formula">Na[Al(OH)₄] → Al(OH)₃↓ + NaOH</div>
-        <p style="font-size:0.85em;">NaOH wird zurückgewonnen (Kreislauf).</p>
+        <p style="font-size:0.85em; color:#555;">♻️ <em>Die NaOH wird zurückgewonnen und im Kreislauf wiederverwendet.</em></p>
       </div>
     </div>
 
     <div class="step">
       <div class="step-num">4</div>
       <div class="step-content">
-        <strong>Kalzinierung</strong> — Erhitzen auf 1200°C
+        <strong>Kalzinierung</strong> — Glühen bei 1200 °C
+        <p style="font-size:0.88em; margin:6px 0;">Das Aluminiumhydroxid wird in Drehrohröfen auf <strong>ca. 1200 °C</strong> erhitzt. Dabei wird das chemisch gebundene Wasser abgespalten. Übrig bleibt ein feines, <strong>weißes Pulver</strong>: reine Tonerde (Al₂O₃).</p>
         <div class="formula">2 Al(OH)₃ → Al₂O₃ + 3 H₂O</div>
-        <p style="font-size:0.85em;">Weißes Pulver: reine Tonerde.</p>
+        <p style="font-size:0.85em; color:#555;">🔥 <em>Dieses Pulver ist der Ausgangsstoff für die Schmelzflusselektrolyse.</em></p>
       </div>
     </div>
+  </div>
+
+  <!-- Quiz: Bayer-Verfahren Schritte zuordnen -->
+  <div class="card">
+    <h2>🧪 Check: Was passiert in welchem Schritt?</h2>
+    <p>In welchem Schritt wird das <strong>Bauxit in Natronlauge gelöst</strong>?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">Schritt 1 — Aufschluss</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Schritt 2 — Klärung</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Schritt 3 — Fällung</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Schritt 4 — Kalzinierung</button>
+    <div class="feedback ok">✅ Richtig! Im Aufschluss wird Bauxit mit heißer NaOH (200 °C, 7 bar) behandelt.</div>
+    <div class="feedback nope">❌ Nein — das Lösen in NaOH ist der <strong>Aufschluss</strong> (Schritt 1).</div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Check: Warum Natronlauge?</h2>
+    <p>Warum löst sich Aluminium in NaOH, aber Eisen nicht?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Eisen ist leichter als Aluminium</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">Aluminium ist amphoter — es reagiert mit Laugen und Säuren</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Natronlauge ist zu schwach für Eisen</button>
+    <div class="feedback ok">✅ Genau! Aluminium ist amphoter — es bildet mit NaOH lösliches Natriumaluminat. Eisenoxide reagieren nicht mit Laugen und bleiben als Feststoff zurück.</div>
+    <div class="feedback nope">❌ Der Grund ist die <strong>Amphoterie</strong> des Aluminiums: Es löst sich sowohl in Säuren als auch in Laugen. Eisen kann das nicht.</div>
   </div>
 
   <div class="card danger">
     <h2>☠️ Rotschlamm — das Problem</h2>
     <ul class="clean">
       <li>Stark alkalisch (pH &gt; 12), giftig</li>
+      <li>Enthält Schwermetalle (Chrom, Vanadium) und radioaktive Elemente</li>
       <li>Weltweit &gt; <strong>4 Milliarden Tonnen</strong> in Deponien</li>
-      <li><strong>2010 Ajka (Ungarn):</strong> Dammbruch — 1 Mio. m³ Giftschlamm, 10 Tote</li>
-      <li>Enthält Schwermetalle und radioaktive Elemente</li>
+      <li><strong>2010 Ajka (Ungarn):</strong> Dammbruch — 1 Mio. m³ Giftschlamm überflutete Dörfer, 10 Tote, 150 Verletzte</li>
+      <li>Bisher gibt es <strong>keine wirtschaftliche Verwertung</strong> in großem Maßstab</li>
     </ul>
   </div>
 
@@ -281,8 +308,19 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
     <button class="quiz-btn" onclick="checkQuiz(this,false)">Al₂O₃ + 3 C → 2 Al + 3 CO</button>
     <button class="quiz-btn" onclick="checkQuiz(this,true)">2 Al(OH)₃ → Al₂O₃ + 3 H₂O</button>
     <button class="quiz-btn" onclick="checkQuiz(this,false)">Al(OH)₃ + NaOH → Na[Al(OH)₄]</button>
-    <div class="feedback ok" id="fb2ok">✅ Genau! Durch Erhitzen auf 1200°C wird Wasser abgespalten und reines Al₂O₃ entsteht.</div>
-    <div class="feedback nope" id="fb2no">❌ Das ist nicht die Kalzinierung. Bei 1200°C wird Al(OH)₃ entwässert: 2 Al(OH)₃ → Al₂O₃ + 3 H₂O</div>
+    <div class="feedback ok" id="fb2ok">✅ Genau! Durch Erhitzen auf 1200 °C wird Wasser abgespalten und reines Al₂O₃ entsteht.</div>
+    <div class="feedback nope" id="fb2no">❌ Das ist nicht die Kalzinierung. Bei 1200 °C wird Al(OH)₃ entwässert: 2 Al(OH)₃ → Al₂O₃ + 3 H₂O</div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Check: Kreislaufwirtschaft im Bayer-Verfahren</h2>
+    <p>Welcher Stoff wird im Bayer-Verfahren <strong>wiederverwendet</strong>?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Rotschlamm</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Aluminiumoxid</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">Natronlauge (NaOH)</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Kryolith</button>
+    <div class="feedback ok">✅ Richtig! Bei der Fällung wird NaOH freigesetzt und kann erneut zum Aufschluss eingesetzt werden — ein Kreislauf.</div>
+    <div class="feedback nope">❌ Nein — es ist die <strong>Natronlauge (NaOH)</strong>. Sie wird bei der Fällung zurückgewonnen und im Kreislauf wiederverwendet.</div>
   </div>
 </div>
 
