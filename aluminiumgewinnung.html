@@ -648,31 +648,12 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
     </details>
   </div>
 
+  <!-- MC: Recycling ZUERST, dann Grafik als Auflösung -->
   <div class="card">
     <h2>♻️ Primär vs. Recycling</h2>
-    <div class="bar-compare">
-      <p style="font-size:0.85em;margin-bottom:8px;"><strong>Energieverbrauch pro Tonne:</strong></p>
-      <div class="bar-row">
-        <div class="bar-label">Primär</div>
-        <div class="bar-track">
-          <div class="bar-fill" style="width:100%;background:var(--red);color:#fff;">15.000 kWh</div>
-        </div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Recycling</div>
-        <div class="bar-track">
-          <div class="bar-fill" style="width:5%;background:var(--green);min-width:70px;color:#fff;">750 kWh</div>
-        </div>
-      </div>
-    </div>
-    <div class="shock" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-color:var(--green);">
-      <span class="emoji">♻️</span>
-      <span class="num" style="color:var(--green);">95% Energieersparnis</span>
-      <p style="color:#065f46;">beim Recycling von Aluminium!</p>
-    </div>
+    <p>Aluminium kann eingeschmolzen und wiederverwendet werden — praktisch <strong>ohne Qualitätsverlust</strong>.</p>
   </div>
 
-  <!-- MC: Recycling -->
   <div class="card">
     <h2>🧪 Check: Recycling</h2>
     <p>Wie viel Energie spart das <strong>Recycling</strong> von Aluminium im Vergleich zur Primärherstellung?</p>
@@ -680,8 +661,23 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
     <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 50 % — die Hälfte</button>
     <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 75 % — drei Viertel</button>
     <button class="quiz-btn" onclick="checkQuiz(this,true)">ca. 95 % — fast alles</button>
-    <div class="feedback ok">✅ Genau! Recycling braucht nur ca. 750 kWh/t statt 15.000 kWh/t — eine Ersparnis von <strong>95 %</strong>. Deshalb ist Aluminium-Recycling so wichtig!</div>
-    <div class="feedback nope">❌ Es sind sogar <strong>95 %</strong>! Primär: 15.000 kWh/t, Recycling: nur 750 kWh/t. Aluminium kann praktisch ohne Qualitätsverlust endlos recycelt werden.</div>
+    <div class="feedback ok">✅ Genau! Recycling braucht nur ca. 750 kWh/t statt 15.000 kWh/t — eine Ersparnis von <strong>95 %</strong>!
+      <div class="bar-compare" style="margin-top:10px;">
+        <div class="bar-row">
+          <div class="bar-label">Primär</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:100%;background:var(--red);color:#fff;">15.000 kWh</div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Recycling</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:5%;background:var(--green);min-width:70px;color:#fff;">750 kWh</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feedback nope">❌ Es sind sogar <strong>95 %</strong>! Primär: 15.000 kWh/t, Recycling: nur 750 kWh/t. Deshalb: Aludosen immer in die Gelbe Tonne!</div>
   </div>
 
   <div class="card">
