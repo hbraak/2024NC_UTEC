@@ -628,12 +628,12 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
     <h2>🧪 Check: Rechenaufgabe</h2>
     <p>Eine Aluminiumhütte produziert <strong>100 Tonnen</strong> Aluminium pro Tag. Wie viele deutsche Haushalte könnte man mit dieser Energie <strong>ein Jahr lang</strong> versorgen?</p>
     <p style="font-size:0.82em; color:#555;"><em>Hinweis: 1 t Al ≈ 15.000 kWh, 1 Haushalt ≈ 3.000 kWh/Jahr</em></p>
-    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 500 Haushalte</button>
-    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 5.000 Haushalte</button>
-    <button class="quiz-btn" onclick="checkQuiz(this,true)">ca. 500.000 Haushalte</button>
-    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 5.000.000 Haushalte</button>
-    <div class="feedback ok">✅ Richtig! 100 t/Tag × 365 Tage × 15.000 kWh/t = 547.500.000 kWh/Jahr ÷ 3.000 kWh = ca. 182.500 Haushalte pro Tag-Produktion. Auf das Jahr: 100 t × 15.000 kWh = 1.500.000 kWh pro Tag → 1.500.000 ÷ 3.000 = <strong>500 Haushalte pro Tag</strong>. Über ein Jahr: 500 × 365 = ~182.500. Die 500.000 ist die nächste Größenordnung.</div>
-    <div class="feedback nope">❌ Rechnung: 100 t × 15.000 kWh/t = 1.500.000 kWh pro Tag. Pro Jahr: 1.500.000 × 365 = 547.500.000 kWh. Geteilt durch 3.000 kWh/Haushalt = <strong>ca. 182.500 Haushalte</strong>. Am nächsten dran: 500.000.</div>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 18.000 Haushalte</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">ca. 180.000 Haushalte</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 1.800.000 Haushalte</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 18.000.000 Haushalte</button>
+    <div class="feedback ok">✅ Richtig! 100 t × 15.000 kWh × 365 Tage = 547.500.000 kWh/Jahr ÷ 3.000 kWh/Haushalt ≈ <strong>182.500 Haushalte</strong> — eine Großstadt!</div>
+    <div class="feedback nope">❌ Rechnung: 100 t × 15.000 kWh/t × 365 = 547.500.000 kWh/Jahr. Geteilt durch 3.000 kWh/Haushalt = <strong>ca. 182.500 Haushalte</strong>.</div>
     <details class="solution-details" style="margin-top:10px; background:#f0f7ff; border:1px solid #b8d4f0; border-radius:8px; padding:0;">
       <summary style="padding:10px 14px; cursor:pointer; font-weight:600; color:#1a56db;">📐 Ausführliche Lösung</summary>
       <div style="padding:8px 14px 14px; font-size:0.9em; line-height:1.6; color:#1e293b;">
