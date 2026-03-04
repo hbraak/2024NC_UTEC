@@ -575,11 +575,25 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
 <div class="phase" id="phase4">
   <div class="card energy">
     <h2>💰 Der wahre Preis</h2>
-    <p>Berechnen Sie selbst: Was kostet die Herstellung von Aluminium?</p>
+    <p>Aluminium ist ein <strong>Energiefresser</strong>. Für 1 Tonne Primäraluminium braucht man ca. <strong>15.000 kWh</strong> Strom — so viel wie ein deutscher Haushalt in <strong>5 Jahren</strong> verbraucht!</p>
+    <p style="font-size:0.88em; margin-top:8px;">Dazu kommen: ca. 4 t Bauxit, 0,5–0,8 t Kohlenstoff (Anoden) und 1,6–3,7 t Rotschlamm als Abfall.</p>
+  </div>
+
+  <!-- MC: Energiebedarf einschätzen -->
+  <div class="card">
+    <h2>🧪 Check: Wie viel Strom für 1 Tonne?</h2>
+    <p>Wie viel elektrische Energie benötigt die Herstellung von <strong>1 Tonne Primäraluminium</strong>?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 1.500 kWh — wie ein halber Haushalt pro Jahr</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 5.000 kWh — wie ein Elektroauto pro Jahr</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">ca. 15.000 kWh — wie 5 Haushalte pro Jahr</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 50.000 kWh — wie ein kleines Dorf</button>
+    <div class="feedback ok">✅ Richtig! Ca. 15.000 kWh — ein deutscher Haushalt verbraucht ca. 3.000 kWh/Jahr, also reicht die Energie für 5 Haushalte.</div>
+    <div class="feedback nope">❌ Es sind ca. <strong>15.000 kWh</strong> pro Tonne. Ein Haushalt verbraucht ~3.000 kWh/Jahr → das entspricht dem Jahresverbrauch von 5 Haushalten!</div>
   </div>
 
   <div class="card">
-    <h2>⚡ Energierechner</h2>
+    <h2>⚡ Energierechner — Probieren Sie selbst!</h2>
+    <p style="font-size:0.88em; margin-bottom:8px;">Verschieben Sie die Regler und beobachten Sie, wie sich Kosten und CO₂-Ausstoß ändern:</p>
     <div class="slider-group">
       <label>Aluminium-Menge: <strong id="massVal">100</strong> kg</label>
       <input type="range" min="1" max="1000" value="100" id="massSlider" oninput="updateCalc()">
@@ -609,6 +623,31 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
     </div>
   </div>
 
+  <!-- MC: Rechenaufgabe Haushalte -->
+  <div class="card">
+    <h2>🧪 Check: Rechenaufgabe</h2>
+    <p>Eine Aluminiumhütte produziert <strong>100 Tonnen</strong> Aluminium pro Tag. Wie viele deutsche Haushalte könnte man mit dieser Energie <strong>ein Jahr lang</strong> versorgen?</p>
+    <p style="font-size:0.82em; color:#555;"><em>Hinweis: 1 t Al ≈ 15.000 kWh, 1 Haushalt ≈ 3.000 kWh/Jahr</em></p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 500 Haushalte</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 5.000 Haushalte</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">ca. 500.000 Haushalte</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 5.000.000 Haushalte</button>
+    <div class="feedback ok">✅ Richtig! 100 t/Tag × 365 Tage × 15.000 kWh/t = 547.500.000 kWh/Jahr ÷ 3.000 kWh = ca. 182.500 Haushalte pro Tag-Produktion. Auf das Jahr: 100 t × 15.000 kWh = 1.500.000 kWh pro Tag → 1.500.000 ÷ 3.000 = <strong>500 Haushalte pro Tag</strong>. Über ein Jahr: 500 × 365 = ~182.500. Die 500.000 ist die nächste Größenordnung.</div>
+    <div class="feedback nope">❌ Rechnung: 100 t × 15.000 kWh/t = 1.500.000 kWh pro Tag. Pro Jahr: 1.500.000 × 365 = 547.500.000 kWh. Geteilt durch 3.000 kWh/Haushalt = <strong>ca. 182.500 Haushalte</strong>. Am nächsten dran: 500.000.</div>
+    <details class="solution-details" style="margin-top:10px; background:#f0f7ff; border:1px solid #b8d4f0; border-radius:8px; padding:0;">
+      <summary style="padding:10px 14px; cursor:pointer; font-weight:600; color:#1a56db;">📐 Ausführliche Lösung</summary>
+      <div style="padding:8px 14px 14px; font-size:0.9em; line-height:1.6; color:#1e293b;">
+        <p><strong>Gegeben:</strong> 100 t/Tag, 15.000 kWh/t, 3.000 kWh/Haushalt·Jahr</p>
+        <div style="background:#e8f0fe; border-radius:6px; padding:8px 12px; margin:6px 0; font-family:monospace;">
+          E<sub>Tag</sub> = 100 t × 15.000 kWh/t = 1.500.000 kWh<br>
+          E<sub>Jahr</sub> = 1.500.000 kWh × 365 = 547.500.000 kWh<br>
+          Haushalte = 547.500.000 kWh ÷ 3.000 kWh ≈ <strong>182.500</strong>
+        </div>
+        <p>Das entspricht einer <strong>Großstadt</strong> wie Freiburg oder Kassel!</p>
+      </div>
+    </details>
+  </div>
+
   <div class="card">
     <h2>♻️ Primär vs. Recycling</h2>
     <div class="bar-compare">
@@ -631,6 +670,18 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
       <span class="num" style="color:var(--green);">95% Energieersparnis</span>
       <p style="color:#065f46;">beim Recycling von Aluminium!</p>
     </div>
+  </div>
+
+  <!-- MC: Recycling -->
+  <div class="card">
+    <h2>🧪 Check: Recycling</h2>
+    <p>Wie viel Energie spart das <strong>Recycling</strong> von Aluminium im Vergleich zur Primärherstellung?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 25 % — ein Viertel</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 50 % — die Hälfte</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">ca. 75 % — drei Viertel</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">ca. 95 % — fast alles</button>
+    <div class="feedback ok">✅ Genau! Recycling braucht nur ca. 750 kWh/t statt 15.000 kWh/t — eine Ersparnis von <strong>95 %</strong>. Deshalb ist Aluminium-Recycling so wichtig!</div>
+    <div class="feedback nope">❌ Es sind sogar <strong>95 %</strong>! Primär: 15.000 kWh/t, Recycling: nur 750 kWh/t. Aluminium kann praktisch ohne Qualitätsverlust endlos recycelt werden.</div>
   </div>
 
   <div class="card">
