@@ -283,103 +283,103 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
   <div class="card water">
     <h2>🔬 Elektrolysezelle — Tippen Sie auf die Bauteile!</h2>
     <div class="cell-container">
-      <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif;">
+        <defs>
+          <marker id="arrowW" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+            <path d="M0,0 L10,3.5 L0,7 Z" fill="#999"/>
+          </marker>
+          <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+            <path d="M0,0 L10,3.5 L0,7 Z" fill="#4488dd"/>
+          </marker>
+        </defs>
+
         <!-- ===== Stromschiene (unterste Schicht) ===== -->
-        <rect x="60" y="285" width="340" height="22" rx="2" fill="#707070" stroke="#555" stroke-width="2"/>
-        <text x="230" y="300" text-anchor="middle" font-size="9" fill="#fff" font-weight="600">Stromschiene</text>
+        <rect x="70" y="315" width="340" height="26" rx="2" fill="#707070" stroke="#555" stroke-width="2"/>
+        <text x="240" y="333" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">Stromschiene</text>
 
         <!-- ===== Wanne / Kohlekathode ===== -->
-        <rect x="50" y="240" width="360" height="45" rx="3" fill="#3a3a3a" stroke="#555" stroke-width="3"
+        <rect x="60" y="268" width="360" height="48" rx="3" fill="#3a3a3a" stroke="#555" stroke-width="3"
           onclick="showCellInfo('kathode')" style="cursor:pointer"/>
-        <text x="230" y="268" text-anchor="middle" font-size="9" fill="#bbb" font-weight="600">Kohlekathode</text>
+        <text x="240" y="297" text-anchor="middle" font-size="13" fill="#ccc" font-weight="700">Kohlekathode</text>
 
         <!-- Wannenwände (links + rechts) -->
-        <rect x="50" y="120" width="18" height="165" fill="#3a3a3a" stroke="#555" stroke-width="2"/>
-        <rect x="392" y="120" width="18" height="165" fill="#3a3a3a" stroke="#555" stroke-width="2"/>
+        <rect x="60" y="130" width="20" height="186" fill="#3a3a3a" stroke="#555" stroke-width="2"/>
+        <rect x="400" y="130" width="20" height="186" fill="#3a3a3a" stroke="#555" stroke-width="2"/>
 
         <!-- ===== Flüssiges Aluminium (blau) ===== -->
-        <rect x="68" y="218" width="324" height="22" fill="#4488dd"
+        <rect x="80" y="243" width="320" height="25" fill="#4488dd"
           onclick="showCellInfo('aluminium')" style="cursor:pointer">
           <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
         </rect>
-        <text x="230" y="233" text-anchor="middle" font-size="9" fill="#fff" font-weight="600">flüssiges Aluminium</text>
+        <text x="240" y="260" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">flüssiges Aluminium</text>
 
         <!-- ===== Schmelze / Elektrolyt (orange) ===== -->
-        <rect x="68" y="150" width="324" height="68" fill="#e07020" opacity="0.85"
+        <rect x="80" y="165" width="320" height="78" fill="#e07020" opacity="0.85"
           onclick="showCellInfo('schmelze')" style="cursor:pointer"/>
-        <text x="230" y="188" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">Schmelze: 960 °C</text>
+        <text x="240" y="210" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">Schmelze: 960 °C</text>
 
         <!-- ===== Tonerdekruste (dunkle Schicht oben auf Schmelze) ===== -->
-        <rect x="68" y="140" width="324" height="12" fill="#8B6914" opacity="0.7"/>
-        <text x="230" y="149" text-anchor="middle" font-size="7" fill="#fff">Tonerdekruste</text>
+        <rect x="80" y="152" width="320" height="14" fill="#8B6914" opacity="0.75"/>
+        <text x="240" y="163" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">Tonerdekruste</text>
 
         <!-- ===== Graphit-Anoden ===== -->
-        <rect x="110" y="40" width="30" height="115" rx="3" fill="#2a2a2a" stroke="#555" stroke-width="2"
+        <rect x="120" y="48" width="34" height="120" rx="3" fill="#2a2a2a" stroke="#555" stroke-width="2"
           onclick="showCellInfo('anode')" style="cursor:pointer"/>
-        <rect x="190" y="40" width="30" height="115" rx="3" fill="#2a2a2a" stroke="#555" stroke-width="2"
+        <rect x="210" y="48" width="34" height="120" rx="3" fill="#2a2a2a" stroke="#555" stroke-width="2"
           onclick="showCellInfo('anode')" style="cursor:pointer"/>
-        <rect x="270" y="40" width="30" height="115" rx="3" fill="#2a2a2a" stroke="#555" stroke-width="2"
+        <rect x="300" y="48" width="34" height="120" rx="3" fill="#2a2a2a" stroke="#555" stroke-width="2"
           onclick="showCellInfo('anode')" style="cursor:pointer"/>
-        <text x="205" y="60" text-anchor="middle" font-size="8" fill="#bbb">Graphitanoden</text>
 
         <!-- Anoden-Halterung (Querbalken oben) -->
-        <rect x="90" y="30" width="230" height="12" rx="2" fill="#555"/>
+        <rect x="100" y="36" width="254" height="14" rx="2" fill="#555"/>
         <!-- Vertikale Halter nach oben -->
-        <rect x="122" y="5" width="6" height="28" fill="#555"/>
-        <rect x="202" y="5" width="6" height="28" fill="#555"/>
-        <rect x="282" y="5" width="6" height="28" fill="#555"/>
+        <rect x="134" y="8" width="6" height="30" fill="#555"/>
+        <rect x="224" y="8" width="6" height="30" fill="#555"/>
+        <rect x="314" y="8" width="6" height="30" fill="#555"/>
+
+        <!-- Label "Graphitanoden" ÜBER dem Querbalken, weiß auf dunklem Hintergrund -->
+        <text x="227" y="30" text-anchor="middle" font-size="12" fill="#eee" font-weight="700">Graphitanoden</text>
 
         <!-- ===== Tonerde/Kryolith-Zufuhr (links) ===== -->
-        <text x="18" y="112" font-size="8" fill="#ccc" font-weight="600">Tonerde</text>
-        <text x="18" y="122" font-size="8" fill="#ccc" font-weight="600">Kryolith</text>
-        <line x1="50" y1="118" x2="68" y2="140" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrowW)"/>
+        <text x="5" y="118" font-size="12" fill="#555" font-weight="700">Tonerde /</text>
+        <text x="5" y="132" font-size="12" fill="#555" font-weight="700">Kryolith</text>
+        <line x1="58" y1="130" x2="78" y2="152" stroke="#999" stroke-width="2" marker-end="url(#arrowW)"/>
 
         <!-- ===== CO + CO₂ Gasabzug (rechts oben) ===== -->
-        <text x="340" y="65" font-size="8" fill="#ccc" font-weight="600"
+        <text x="360" y="72" font-size="12" fill="#555" font-weight="700"
           onclick="showCellInfo('gas')" style="cursor:pointer">CO + CO₂ ↑</text>
-        <line x1="330" y1="80" x2="330" y2="68" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrowW)"/>
+        <line x1="370" y1="90" x2="370" y2="78" stroke="#999" stroke-width="2" marker-end="url(#arrowW)"/>
 
         <!-- Gasblasen animiert -->
-        <circle cx="140" cy="148" r="3" fill="rgba(255,255,255,0.5)">
-          <animate attributeName="cy" values="148;80;148" dur="2.5s" repeatCount="indefinite"/>
+        <circle cx="152" cy="160" r="4" fill="rgba(255,255,255,0.5)">
+          <animate attributeName="cy" values="160;85;160" dur="2.5s" repeatCount="indefinite"/>
         </circle>
-        <circle cx="220" cy="152" r="4" fill="rgba(255,255,255,0.4)">
-          <animate attributeName="cy" values="152;75;152" dur="3s" repeatCount="indefinite"/>
+        <circle cx="242" cy="165" r="5" fill="rgba(255,255,255,0.4)">
+          <animate attributeName="cy" values="165;80;165" dur="3s" repeatCount="indefinite"/>
         </circle>
-        <circle cx="300" cy="146" r="3" fill="rgba(255,255,255,0.5)">
-          <animate attributeName="cy" values="146;78;146" dur="2.8s" repeatCount="indefinite"/>
+        <circle cx="332" cy="158" r="4" fill="rgba(255,255,255,0.5)">
+          <animate attributeName="cy" values="158;82;158" dur="2.8s" repeatCount="indefinite"/>
         </circle>
 
         <!-- ===== Al-Abstich (unten links) ===== -->
-        <line x1="68" y1="228" x2="25" y2="260" stroke="#4488dd" stroke-width="3" marker-end="url(#arrowBlue)"/>
-        <text x="8" y="275" font-size="8" fill="#4488dd" font-weight="700">Al</text>
+        <line x1="80" y1="255" x2="30" y2="295" stroke="#4488dd" stroke-width="3" marker-end="url(#arrowBlue)"/>
+        <text x="10" y="310" font-size="14" fill="#4488dd" font-weight="700">Al</text>
 
         <!-- ===== Externer Stromkreis (rechts) ===== -->
-        <!-- Kabel von Anodenhalterung nach oben rechts -->
-        <line x1="320" y1="36" x2="430" y2="36" stroke="#888" stroke-width="2"/>
-        <line x1="430" y1="36" x2="430" y2="295" stroke="#888" stroke-width="2"/>
-        <line x1="400" y1="295" x2="430" y2="295" stroke="#888" stroke-width="2"/>
+        <line x1="354" y1="43" x2="470" y2="43" stroke="#888" stroke-width="2.5"/>
+        <line x1="470" y1="43" x2="470" y2="328" stroke="#888" stroke-width="2.5"/>
+        <line x1="420" y1="328" x2="470" y2="328" stroke="#888" stroke-width="2.5"/>
         <!-- Plus-Symbol -->
-        <circle cx="450" cy="36" r="12" fill="none" stroke="#e05555" stroke-width="2"/>
-        <text x="450" y="40" text-anchor="middle" font-size="14" fill="#e05555" font-weight="700">+</text>
+        <circle cx="492" cy="43" r="14" fill="none" stroke="#e05555" stroke-width="2.5"/>
+        <text x="492" y="48" text-anchor="middle" font-size="16" fill="#e05555" font-weight="700">+</text>
         <!-- Minus-Symbol -->
-        <circle cx="450" cy="295" r="12" fill="none" stroke="#5577ee" stroke-width="2"/>
-        <text x="450" y="299" text-anchor="middle" font-size="14" fill="#5577ee" font-weight="700">−</text>
+        <circle cx="492" cy="328" r="14" fill="none" stroke="#5577ee" stroke-width="2.5"/>
+        <text x="492" y="333" text-anchor="middle" font-size="16" fill="#5577ee" font-weight="700">−</text>
         <!-- Verbindungslinie Plus-Minus -->
-        <line x1="450" y1="48" x2="450" y2="283" stroke="#888" stroke-width="2"/>
+        <line x1="492" y1="57" x2="492" y2="314" stroke="#888" stroke-width="2.5"/>
         <!-- Spannung/Strom -->
-        <text x="480" y="160" font-size="8" fill="#ccc" font-weight="600">5 Volt</text>
-        <text x="480" y="172" font-size="8" fill="#ccc" font-weight="600">150 kA</text>
-
-        <!-- Pfeil-Marker Definitionen -->
-        <defs>
-          <marker id="arrowW" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-            <path d="M0,0 L8,3 L0,6 Z" fill="#ccc"/>
-          </marker>
-          <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-            <path d="M0,0 L8,3 L0,6 Z" fill="#4488dd"/>
-          </marker>
-        </defs>
+        <text x="520" y="180" font-size="13" fill="#555" font-weight="700">5 Volt</text>
+        <text x="520" y="196" font-size="13" fill="#555" font-weight="700">150 kA</text>
       </svg>
     </div>
 
