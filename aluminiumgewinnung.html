@@ -582,14 +582,19 @@ function goPhase(n) {
   window.scrollTo(0,0);
 }
 
-// Swipe
-let touchStartX = 0;
-document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+// Swipe (strict: X-Bewegung muss deutlich größer als Y sein)
+let touchStartX = 0, touchStartY = 0;
+document.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+});
 document.addEventListener('touchend', e => {
-  const diff = touchStartX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 60) {
-    if (diff > 0 && current < total) goPhase(current+1);
-    if (diff < 0 && current > 1) goPhase(current-1);
+  const dx = touchStartX - e.changedTouches[0].clientX;
+  const dy = touchStartY - e.changedTouches[0].clientY;
+  // Nur wenn horizontal > 80px UND mindestens 2× so weit wie vertikal
+  if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy) * 2) {
+    if (dx > 0 && current < total) goPhase(current+1);
+    if (dx < 0 && current > 1) goPhase(current-1);
   }
 });
 
