@@ -457,41 +457,106 @@ ul.clean li::before { content:'▸'; position:absolute; left:0; color:var(--gree
     </div>
 
     <div class="cell-info" id="info-anode">
-      <strong style="color:var(--red);">⊕ Graphit-Anode:</strong> Hier entsteht Sauerstoff, der den Kohlenstoff verbrennt:
-      <div class="formula">C + O²⁻ → CO₂ + 4e⁻</div>
-      Die Anoden verbrauchen sich und müssen regelmäßig ersetzt werden.
+      <strong style="color:var(--red);">⊕ Graphit-Anode (Pluspol):</strong> Hier werden die Oxid-Ionen oxidiert — sie geben Elektronen ab:
+      <div class="formula">6 O²⁻ → 3 O₂ + 12 e⁻</div>
+      Der entstehende Sauerstoff reagiert sofort mit dem Graphit der Anode:
+      <div class="formula">C + O₂ → CO₂ &nbsp;&nbsp;bzw.&nbsp;&nbsp; CO₂ + C → 2 CO</div>
+      <p style="font-size:0.85em;">⚠️ Die Anoden verbrauchen sich dabei und müssen alle 2–4 Wochen ersetzt werden!</p>
     </div>
     <div class="cell-info" id="info-kathode">
-      <strong style="color:var(--blue);">⊖ Kathode (Wannenboden):</strong> Hier wird Al³⁺ reduziert:
-      <div class="formula">Al³⁺ + 3e⁻ → Al</div>
-      Flüssiges Aluminium sammelt sich am Boden.
+      <strong style="color:var(--blue);">⊖ Kathode / Wannenboden (Minuspol):</strong> Hier werden Al³⁺-Ionen reduziert — sie nehmen Elektronen auf:
+      <div class="formula">4 Al³⁺ + 12 e⁻ → 4 Al</div>
+      <p style="font-size:0.85em;">Das flüssige Aluminium (660 °C Schmelzpunkt) sammelt sich am Boden und wird regelmäßig abgesaugt.</p>
     </div>
     <div class="cell-info" id="info-schmelze">
-      <strong style="color:var(--orange);">Schmelze:</strong> Al₂O₃ gelöst in Na₃AlF₆ (Kryolith) bei 960°C. Kryolith senkt den Schmelzpunkt von 2050°C drastisch ab.
+      <strong style="color:var(--orange);">Schmelze (Elektrolyt):</strong> Al₂O₃ gelöst in Na₃AlF₆ (Kryolith) bei 960 °C. In der Schmelze dissoziiert das Al₂O₃ in Al³⁺- und O²⁻-Ionen, die an den Elektroden reagieren.
     </div>
     <div class="cell-info" id="info-aluminium">
-      <strong style="color:var(--text);">Flüssiges Aluminium:</strong> Sammelt sich aufgrund seiner höheren Dichte am Wannenboden und wird regelmäßig abgesaugt. Reinheit: bis 99,9%.
+      <strong style="color:var(--text);">Flüssiges Aluminium:</strong> Sammelt sich aufgrund seiner höheren Dichte (2,38 g/cm³ flüssig) am Wannenboden. Wird regelmäßig abgesaugt. Reinheit: bis 99,9 %.
     </div>
     <div class="cell-info" id="info-gas">
-      <strong style="color:var(--muted);">Gasabzug:</strong> O₂ und CO₂ entstehen an der Anode. Außerdem aggressive Fluorverbindungen — müssen aufgefangen werden!
+      <strong style="color:var(--muted);">Gasabzug:</strong> CO₂ und CO entstehen durch die Reaktion von O₂ mit den Graphit-Anoden. Außerdem aggressive Fluorverbindungen (HF, CF₄) — müssen aufgefangen und gereinigt werden!
     </div>
   </div>
 
+  <!-- Reaktionsgleichungen explizit -->
   <div class="card">
-    <h2>⚡ Gesamtreaktion</h2>
-    <div class="formula" style="font-size:1.1em;">2 Al₂O₃ → 4 Al + 3 O₂</div>
-    <p style="margin-top:8px;">Spannung: 5–6 V &nbsp;|&nbsp; Stromstärke: <strong>150.000 A</strong></p>
-    <p style="font-size:0.85em;color:var(--muted);">Zum Vergleich: Ihre Haussicherung hat 16 A.</p>
+    <h2>⚗️ Reaktionen an den Elektroden</h2>
+
+    <div class="step">
+      <div class="step-num" style="background:var(--blue);">⊖</div>
+      <div class="step-content">
+        <strong>Kathode (Reduktion)</strong> — Al³⁺ nimmt Elektronen auf
+        <div class="formula">4 Al³⁺ + 12 e⁻ → 4 Al</div>
+        <p style="font-size:0.85em; color:#555;">💡 <em>Reduktion = Elektronenaufnahme. Das Metall wird „reduziert" — es gewinnt Elektronen.</em></p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num" style="background:var(--red);">⊕</div>
+      <div class="step-content">
+        <strong>Anode (Oxidation)</strong> — O²⁻ gibt Elektronen ab
+        <div class="formula">6 O²⁻ → 3 O₂ + 12 e⁻</div>
+        <p style="font-size:0.85em; color:#555;">💡 <em>Oxidation = Elektronenabgabe. Der Sauerstoff reagiert weiter mit der Graphit-Anode zu CO₂.</em></p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num" style="background:var(--green);">Σ</div>
+      <div class="step-content">
+        <strong>Gesamtreaktion</strong>
+        <div class="formula" style="font-size:1.05em;">2 Al₂O₃ → 4 Al + 3 O₂</div>
+        <p style="font-size:0.88em; margin-top:6px;">Spannung: <strong>5–6 V</strong> &nbsp;|&nbsp; Stromstärke: <strong>150.000 A</strong></p>
+        <p style="font-size:0.85em; color:#555;">Zum Vergleich: Ihre Haussicherung hat 16 A — die Elektrolysezelle braucht fast <strong>10.000×</strong> so viel!</p>
+      </div>
+    </div>
   </div>
 
+  <!-- MC: Kathode vs Anode -->
+  <div class="card">
+    <h2>🧪 Check: Was passiert an der Kathode?</h2>
+    <p>Welche Reaktion findet an der <strong>Kathode</strong> (Minuspol) statt?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">O²⁻ wird zu O₂ oxidiert</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">Al³⁺ wird zu Al reduziert</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Kohlenstoff verbrennt zu CO₂</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Na⁺ wird zu Na reduziert</button>
+    <div class="feedback ok">✅ Richtig! An der Kathode werden Al³⁺-Ionen reduziert (Elektronenaufnahme): Al³⁺ + 3 e⁻ → Al</div>
+    <div class="feedback nope">❌ An der Kathode findet <strong>Reduktion</strong> statt: Al³⁺ + 3 e⁻ → Al. Oxidation passiert an der Anode!</div>
+  </div>
+
+  <!-- MC: Warum verbrauchen sich die Anoden? -->
+  <div class="card">
+    <h2>🧪 Check: Anodenverbrauch</h2>
+    <p>Warum müssen die <strong>Graphit-Anoden</strong> regelmäßig ersetzt werden?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Sie schmelzen bei 960 °C</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Das Aluminium greift sie an</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">Der entstehende Sauerstoff verbrennt den Kohlenstoff zu CO₂</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Kryolith löst den Graphit auf</button>
+    <div class="feedback ok">✅ Genau! Der an der Anode entstehende Sauerstoff reagiert mit dem Graphit: C + O₂ → CO₂. Die Anoden werden buchstäblich „aufgefressen".</div>
+    <div class="feedback nope">❌ Der Grund: Der Sauerstoff, der an der Anode entsteht, <strong>verbrennt den Graphit</strong> zu CO₂. Deshalb schrumpfen die Anoden und müssen nachgesetzt werden.</div>
+  </div>
+
+  <!-- MC: Warum Kryolith -->
   <div class="card">
     <h2>🧪 Check: Warum Kryolith?</h2>
     <p>Warum wird Na₃AlF₆ zur Schmelze hinzugefügt?</p>
     <button class="quiz-btn" onclick="checkQuiz(this,false)">Es liefert zusätzliches Aluminium</button>
-    <button class="quiz-btn" onclick="checkQuiz(this,true)">Es senkt den Schmelzpunkt von 2050°C auf ~960°C</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">Es senkt den Schmelzpunkt von 2050 °C auf ~960 °C</button>
     <button class="quiz-btn" onclick="checkQuiz(this,false)">Es verhindert die Oxidation des Aluminiums</button>
-    <div class="feedback ok" id="fb3ok">✅ Korrekt! Ohne Kryolith müsste man Al₂O₃ auf über 2050°C erhitzen — technisch und energetisch kaum machbar.</div>
-    <div class="feedback nope" id="fb3no">❌ Nicht ganz. Kryolith ist ein Flussmittel: Es senkt den Schmelzpunkt von 2050°C auf ca. 960°C.</div>
+    <div class="feedback ok" id="fb3ok">✅ Korrekt! Ohne Kryolith müsste man Al₂O₃ auf über 2050 °C erhitzen — technisch und energetisch kaum machbar.</div>
+    <div class="feedback nope" id="fb3no">❌ Nicht ganz. Kryolith ist ein Flussmittel: Es senkt den Schmelzpunkt von 2050 °C auf ca. 960 °C.</div>
+  </div>
+
+  <!-- MC: Oxidation vs Reduktion -->
+  <div class="card">
+    <h2>🧪 Check: OxRed-Begriffe</h2>
+    <p>Was bedeutet <strong>„Reduktion"</strong> bei der Elektrolyse?</p>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Ein Stoff gibt Elektronen ab</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,true)">Ein Stoff nimmt Elektronen auf</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Ein Stoff reagiert mit Sauerstoff</button>
+    <button class="quiz-btn" onclick="checkQuiz(this,false)">Ein Stoff wird gasförmig</button>
+    <div class="feedback ok">✅ Richtig! Reduktion = Elektronenaufnahme. Merkhilfe: <strong>„Red = Ran"</strong> — Reduktion nimmt Elektronen <em>ran</em> (auf).</div>
+    <div class="feedback nope">❌ Reduktion = <strong>Elektronenaufnahme</strong>. Das Gegenteil (Elektronenabgabe) ist die Oxidation. Merkhilfe: <strong>„Red = Ran"</strong>.</div>
   </div>
 </div>
 
