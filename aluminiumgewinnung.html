@@ -128,11 +128,13 @@ body {
   background:rgba(255,255,255,0.95); backdrop-filter:blur(10px);
   border-top:1px solid var(--bg3); display:flex; align-items:center;
   justify-content:space-between; padding:0 16px; z-index:200; }
-.nav-btn { background:none; border:none; color:var(--muted); font-size:0.75em;
+.nav-btn { background:#f0f0f0; border:2px solid #ddd; color:var(--muted); font-size:0.78em;
   display:flex; flex-direction:column; align-items:center; gap:2px; cursor:pointer;
-  padding:8px 16px; min-width:60px; -webkit-tap-highlight-color:transparent; }
-.nav-btn.active { color:var(--green); font-weight:600; }
-.nav-btn .icon { font-size:1.4em; }
+  padding:8px 12px; min-width:56px; border-radius:12px; transition:all 0.2s;
+  -webkit-tap-highlight-color:transparent; }
+.nav-btn:hover { background:#e0f5e0; border-color:var(--green); color:var(--green); transform:scale(1.05); }
+.nav-btn.active { background:var(--green); border-color:var(--green); color:#fff; font-weight:700; box-shadow:0 2px 8px rgba(22,163,74,0.3); }
+.nav-btn .icon { font-size:1.5em; }
 
 /* Lists */
 ul.clean { list-style:none; padding:0; }
