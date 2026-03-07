@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lernliste Klausur Q2 – Abfallwirtschaft – UTEC 12NC</title>
+<style>
+  :root {
+    --accent: #2563eb;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --muted: #64748b;
+    --green: #16a34a;
+    --yellow: #ca8a04;
+    --red: #dc2626;
+    --done: #d1fae5;
+    --done-border: #6ee7b7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--accent);
+  }
+  header h1 { font-size: 1.6rem; color: var(--accent); }
+  header p { color: var(--muted); margin-top: 0.3rem; }
+
+  .progress-container {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  .progress-header span { font-weight: 600; font-size: 0.95rem; }
+  .progress-header .pct { color: var(--accent); font-size: 1.3rem; font-weight: 700; }
+  .progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--green));
+    border-radius: 6px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  .progress-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .info-box {
+    background: #eff6ff;
+    border-left: 4px solid var(--accent);
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .info-box strong { color: var(--accent); }
+
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .section-header {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+  .section-header:hover { background: #f8fafc; }
+  .section-header h2 {
+    font-size: 1.1rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+  }
+  .section-header .badge {
+    background: var(--accent);
+    color: white;
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .section-header .section-progress {
+    font-size: 0.8rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .section-header .arrow {
+    transition: transform 0.3s;
+    font-size: 1.2rem;
+    color: var(--muted);
+  }
+  .section-header.collapsed .arrow { transform: rotate(-90deg); }
+  .section-body {
+    padding: 0 1.5rem 1.2rem;
+    transition: max-height 0.4s ease, opacity 0.3s;
+    overflow: hidden;
+  }
+  .section-body.hidden {
+    max-height: 0 !important;
+    padding: 0 1.5rem;
+    opacity: 0;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    transition: opacity 0.3s, background 0.3s;
+    border-radius: 4px;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-item.done { opacity: 0.55; }
+  .check-item.done .item-text { text-decoration: line-through; }
+  .check-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    accent-color: var(--green);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .item-text { flex: 1; }
+  .item-text b { color: var(--text); }
+
+  .prio {
+    font-size: 0.7rem;
+    margin-left: 0.4rem;
+    white-space: nowrap;
+  }
+  .prio-high { color: var(--red); }
+  .prio-med { color: var(--yellow); }
+  .prio-low { color: var(--green); }
+
+  .formula {
+    background: #f1f5f9;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Cambria Math', 'Latin Modern Math', Georgia, serif;
+    font-style: italic;
+    white-space: nowrap;
+    font-size: 0.95em;
+  }
+  .tip {
+    background: #fefce8;
+    border-left: 4px solid var(--yellow);
+    padding: 0.8rem 1rem;
+    margin-top: 0.8rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9rem;
+  }
+  .tip::before { content: '💡 '; }
+
+  .self-test {
+    background: #f0fdf4;
+    border: 1px solid var(--done-border);
+    border-radius: 8px;
+    margin-top: 0.8rem;
+    overflow: hidden;
+  }
+  .self-test summary {
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--green);
+    user-select: none;
+  }
+  .self-test summary:hover { background: #dcfce7; }
+  .self-test .answer {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--done-border);
+  }
+
+  .reset-btn {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5rem 1.5rem;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+  .reset-btn:hover {
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📋 Lernliste Klausur Q2 – Abfallwirtschaft</h1>
+  <p>UTEC 12NC · 12.03.2026 · 135 Minuten · 70 Punkte</p>
+</header>
+
+<div class="progress-container">
+  <div class="progress-header">
+    <span>Lernfortschritt</span>
+    <span class="pct" id="pct">0 %</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="bar"></div></div>
+  <div class="progress-details">
+    <span id="done-count">0 von 0 erledigt</span>
+    <span id="status">🔴 Noch viel zu tun</span>
+  </div>
+</div>
+
+<div class="info-box">
+  <strong>Hilfsmittel in der Klausur:</strong> DIN A4 kariertes Papier (JEDES Blatt: Name + Seitennummer), Lineal.<br>
+  <strong>Themen:</strong> Kreislaufwirtschaftsgesetz, MVA (Aufbau & Prozess), Mülldreieck, Abfallanalyse
+</div>
+
+<!-- Section 1: KrWG -->
+<section>
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>⚖️ Kreislaufwirtschaftsgesetz (KrWG) <span class="badge">18 Punkte</span></h2>
+    <div style="display:flex;align-items:center;gap:0.8rem">
+      <span class="section-progress"></span>
+      <span class="arrow">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Abfallbegriff definieren</b> – Was ist „Abfall" im Sinne des KrWG? (§ 3 Abs. 1) <span class="prio prio-high">★★★ KLAUSURRELEVANT</span></div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Abfallhierarchie kennen</b> – Die 5 Stufen in der richtigen Reihenfolge (§ 6 KrWG): 1. Vermeidung → 2. Vorbereitung zur Wiederverwendung → 3. Recycling → 4. Sonstige Verwertung (v.a. energetische) → 5. Beseitigung <span class="prio prio-high">★★★ KLAUSURRELEVANT</span></div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Thermische Verwertung einordnen</b> – Wo steht die MVA in der Abfallhierarchie? → Stufe 4 (sonstige/energetische Verwertung)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Vorteile der thermischen Abfallverwertung</b> – mind. 3 Argumente kennen (z.B. Volumenreduktion, Energiegewinnung, Schadstoffzerstörung) <span class="prio prio-high">★★★ KLAUSURRELEVANT</span></div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Nachteile der thermischen Abfallverwertung</b> – mind. 3 Argumente kennen (z.B. CO₂-Emissionen, Schlacke/Filterstäube, Ressourcenverlust, hohe Investitionskosten)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Stellungnahme formulieren</b> – Pro-/Contra-Abwägung mit Bezug auf das KrWG strukturiert darstellen können</div></div>
+
+    <details class="self-test">
+      <summary>🧪 Selbsttest: Abfallhierarchie</summary>
+      <div class="answer">
+        <strong>Frage:</strong> Nennen Sie die 5 Stufen der Abfallhierarchie nach § 6 KrWG in der richtigen Reihenfolge.<br><br>
+        <strong>Antwort:</strong> 1. Vermeidung – 2. Vorbereitung zur Wiederverwendung – 3. Recycling – 4. Sonstige Verwertung (insb. energetische Verwertung) – 5. Beseitigung
+      </div>
+    </details>
+    <details class="self-test">
+      <summary>🧪 Selbsttest: Abfallbegriff</summary>
+      <div class="answer">
+        <strong>Frage:</strong> Definieren Sie den Begriff „Abfall" im Sinne des KrWG.<br><br>
+        <strong>Antwort:</strong> Abfälle sind alle Stoffe oder Gegenstände, deren sich ihr Besitzer entledigt, entledigen will oder entledigen muss (§ 3 Abs. 1 KrWG).
+      </div>
+    </details>
+
+    <div class="tip">In der Klausur wird eine <b>Stellungnahme</b> verlangt – nicht nur Aufzählung! Achten Sie auf eine schlüssige Argumentation mit Bezug zum KrWG.</div>
+  </div>
+</section>
+
+<!-- Section 2: MVA -->
+<section>
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🏭 Müllverbrennungsanlage (MVA) <span class="badge">24 Punkte</span></h2>
+    <div style="display:flex;align-items:center;gap:0.8rem">
+      <span class="section-progress"></span>
+      <span class="arrow">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Stationen einer MVA benennen</b> – Bunker, Kran, Aufgabetrichter, Rostfeuerung, Kessel, Turbine/Generator, Rauchgasreinigung, Schornstein, Schlackeaustrag <span class="prio prio-high">★★★ KLAUSURRELEVANT</span></div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Funktionsweise erläutern</b> – Jeden Schritt in eigenen Worten erklären können (Anlieferung → Verbrennung → Energienutzung → Rauchgasreinigung → Entsorgung der Rückstände) <span class="prio prio-high">★★★ KLAUSURRELEVANT</span></div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Rostfeuerung</b> – Prinzip verstehen: Abfall auf beweglichem Rost, Verbrennungsluft von unten, Temperaturen 850–1100 °C</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Rauchgasreinigung</b> – Stufen kennen: Entstaubung (Elektrofilter), Entschwefelung, Entstickung (SCR/SNCR), Dioxin-Abscheidung</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Energiegewinnung</b> – Dampfkessel → Turbine → Generator → Strom + Fernwärme</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Rückstände</b> – Schlacke (Deponie/Straßenbau), Filterstäube (Sondermüll), Abwasser</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Kenndaten Deutschland</b> – ca. 68 MVA, Gesamtkapazität ca. 20 Mio. t/Jahr</div></div>
+
+    <details class="self-test">
+      <summary>🧪 Selbsttest: MVA-Stationen</summary>
+      <div class="answer">
+        <strong>Frage:</strong> Beschreiben Sie den Weg des Abfalls durch eine MVA – vom Anliefern bis zum Schornstein.<br><br>
+        <strong>Antwort:</strong> Anlieferung → Bunker (Zwischenlagerung, Durchmischung) → Kran hebt Abfall in Aufgabetrichter → Rostfeuerung (Verbrennung bei 850–1100 °C) → Heißes Rauchgas erhitzt Dampfkessel → Dampfturbine + Generator erzeugen Strom/Fernwärme → Rauchgasreinigung (Elektrofilter, Entschwefelung, Entstickung, Aktivkohle) → gereinigtes Abgas über Schornstein → Schlacke wird ausgetragen und aufbereitet
+      </div>
+    </details>
+
+    <div class="tip">In der Klausur müssen Sie eine <b>MVA-Abbildung beschriften</b> (8 P.) und die Stationen <b>erläutern</b> (16 P.). „Erläutern" heißt: nicht nur benennen, sondern die Funktion jeder Station erklären!</div>
+  </div>
+</section>
+
+<!-- Section 3: Mülldreieck -->
+<section>
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🔺 Mülldreieck (Tanner-Dreieck) <span class="badge">12 Punkte</span></h2>
+    <div style="display:flex;align-items:center;gap:0.8rem">
+      <span class="section-progress"></span>
+      <span class="arrow">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Drei Achsen des Mülldreiecks</b> – Anteil Wasser (%), Anteil Asche (%), Anteil Brennbares (%) – Summe ergibt immer 100 % <span class="prio prio-high">★★★ KLAUSURRELEVANT</span></div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Grüner Bereich</b> – kennzeichnet den Zusammensetzungsbereich, in dem Abfall <b>ohne Stützfeuerung</b> selbständig brennt <span class="prio prio-high">★★★ KLAUSURRELEVANT</span></div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Bedingungen für Verbrennung ohne Stützfeuerung</b> – ausreichend hoher Anteil Brennbares, nicht zu viel Wasser, nicht zu viel Asche (typisch: Brennbares > 25 %, Wasser < 50 %, Asche < 60 %)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Stützfeuerung erklären</b> – Zusätzliche Brenner (z.B. Erdgas), wenn Abfall allein nicht ausreichend Heizwert hat</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Punkte eintragen können</b> – Aus gegebenen Prozentwerten (Asche/Wasser/Brennbares) einen Punkt im Dreiecksdiagramm lokalisieren</div></div>
+
+    <details class="self-test">
+      <summary>🧪 Selbsttest: Mülldreieck</summary>
+      <div class="answer">
+        <strong>Frage:</strong> Eine Abfallprobe hat 30 % Wasser, 20 % Asche und 50 % Brennbares. Liegt der Punkt im grünen Bereich?<br><br>
+        <strong>Antwort:</strong> Ja – der Anteil Brennbares ist mit 50 % hoch genug, der Wasseranteil mit 30 % moderat und der Ascheanteil mit 20 % niedrig. Dieser Abfall brennt selbständig ohne Stützfeuerung.
+      </div>
+    </details>
+
+    <div class="tip">Üben Sie das Ablesen und Eintragen von Punkten im Dreiecksdiagramm – das braucht Übung!</div>
+  </div>
+</section>
+
+<!-- Section 4: Abfallanalyse -->
+<section>
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🔬 Abfallanalyse & Datenauswertung <span class="badge">16 Punkte</span></h2>
+    <div style="display:flex;align-items:center;gap:0.8rem">
+      <span class="section-progress"></span>
+      <span class="arrow">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Trockenschrank (120 °C)</b> – Verdampft das Wasser aus der Probe → Masseverlust = Wasseranteil <span class="prio prio-high">★★★ KLAUSURRELEVANT</span></div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Muffelofen (800 °C)</b> – Verbrennt die organischen/brennbaren Bestandteile → Rückstand = Asche</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Berechnung der Anteile</b><br>
+      <span class="formula">Wasser = (m<sub>feucht</sub> − m<sub>trocken</sub>) / m<sub>Probe</sub> × 100 %</span><br>
+      <span class="formula">Asche = (m<sub>nach 800°C</sub> − m<sub>Tiegel</sub>) / m<sub>Probe</sub> × 100 %</span><br>
+      <span class="formula">Brennbares = 100 % − Wasser − Asche</span>
+      <span class="prio prio-high">★★★ KLAUSURRELEVANT</span>
+    </div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Ergebnis ins Mülldreieck eintragen</b> – Berechnete Werte als Punkt im Dreiecksdiagramm markieren</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Diagramm per Hand zeichnen</b> – Gruppiertes Säulen- oder Balkendiagramm zum Vergleich zweier Proben. Mit Lineal, sauberer Skalierung und Beschriftung! <span class="prio prio-med">★★ KLAUSURRELEVANT</span></div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Diagramm-Grundregeln</b> – Achsen beschriften (inkl. Einheiten „%"), aussagekräftiger Titel, Legende bei Vergleichsdiagrammen, gleichmäßige Skalierung</div></div>
+
+    <details class="self-test">
+      <summary>🧪 Selbsttest: Berechnung</summary>
+      <div class="answer">
+        <strong>Frage:</strong> Ein leerer Tiegel wiegt 50 g. Mit feuchtem Abfall: 120 g. Nach Trocknung (120 °C): 95 g. Nach Veraschung (800 °C): 65 g. Berechnen Sie die Anteile.<br><br>
+        <strong>Antwort:</strong><br>
+        Probenmasse: 120 g − 50 g = 70 g<br>
+        Wasser: (120 g − 95 g) / 70 g × 100 % = <b>35,7 %</b><br>
+        Asche: (65 g − 50 g) / 70 g × 100 % = <b>21,4 %</b><br>
+        Brennbares: 100 % − 35,7 % − 21,4 % = <b>42,9 %</b>
+      </div>
+    </details>
+
+    <div class="tip">Vergessen Sie nicht: Die Probenmasse ist die <b>Masse des Abfalls ohne Tiegel</b> (m<sub>feucht</sub> − m<sub>Tiegel</sub>)!</div>
+  </div>
+</section>
+
+<button class="reset-btn" onclick="resetAll()">🔄 Fortschritt zurücksetzen</button>
+
+<footer>
+  Lore-Lorentz-Schule · UTEC 12NC · Schuljahr 2025/26 · Klausur am 12.03.2026
+</footer>
+
+<script>
+const STORAGE_KEY = 'lernliste-abfall-q2-12nc';
+
+function saveState() {
+  const boxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+  const state = [...boxes].map(b => b.checked);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  updateProgress();
+}
+
+function loadState() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (!saved) return;
+  const state = JSON.parse(saved);
+  const boxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+  boxes.forEach((b, i) => {
+    if (state[i]) {
+      b.checked = true;
+      b.closest('.check-item').classList.add('done');
+    }
+  });
+  updateProgress();
+}
+
+function updateProgress() {
+  const boxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+  const total = boxes.length;
+  const done = [...boxes].filter(b => b.checked).length;
+  const pct = total ? Math.round(done / total * 100) : 0;
+
+  document.getElementById('pct').textContent = pct + ' %';
+  document.getElementById('bar').style.width = pct + '%';
+  document.getElementById('done-count').textContent = done + ' von ' + total + ' erledigt';
+
+  const statusEl = document.getElementById('status');
+  if (pct === 100) statusEl.textContent = '🟢 Bereit für die Klausur!';
+  else if (pct >= 70) statusEl.textContent = '🟡 Fast geschafft!';
+  else if (pct >= 30) statusEl.textContent = '🟠 Weiter so!';
+  else statusEl.textContent = '🔴 Noch viel zu tun';
+
+  // Section progress
+  document.querySelectorAll('section').forEach(sec => {
+    const secBoxes = sec.querySelectorAll('.check-item input[type="checkbox"]');
+    const secDone = [...secBoxes].filter(b => b.checked).length;
+    const secTotal = secBoxes.length;
+    const progEl = sec.querySelector('.section-progress');
+    if (progEl) progEl.textContent = secDone + '/' + secTotal;
+  });
+}
+
+function toggleSection(header) {
+  header.classList.toggle('collapsed');
+  const body = header.nextElementSibling;
+  body.classList.toggle('hidden');
+}
+
+function resetAll() {
+  if (!confirm('Wirklich den gesamten Fortschritt zurücksetzen?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('.check-item input[type="checkbox"]').forEach(b => {
+    b.checked = false;
+    b.closest('.check-item').classList.remove('done');
+  });
+  updateProgress();
+}
+
+// Init
+document.querySelectorAll('.check-item input[type="checkbox"]').forEach(box => {
+  box.addEventListener('change', function() {
+    this.closest('.check-item').classList.toggle('done', this.checked);
+    saveState();
+  });
+});
+loadState();
+</script>
+
+</body>
+</html>
