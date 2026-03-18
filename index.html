@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTEC 12NC — Lore-Lorentz-Schule</title>
+<style>
+  :root {
+    --green: #0d9668;
+    --green-dark: #087a52;
+    --green-light: #e8f5e9;
+    --blue: #1565c0;
+    --orange: #e65100;
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #1e293b;
+    --text2: #334155;
+    --muted: #64748b;
+    --radius: 14px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0d7a52, #0a5c3e);
+    padding: 28px 20px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--green), var(--blue), var(--orange));
+  }
+  .header .logo {
+    max-width: 220px;
+    height: auto;
+    margin-bottom: 12px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+  .header h1 {
+    font-size: clamp(1.5em, 4vw, 2em);
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .header .sub {
+    color: #a7f3d0;
+    font-size: 1em;
+  }
+
+  /* Container */
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+  }
+
+  /* Quartal-Sektion */
+  .quartal {
+    margin-bottom: 28px;
+  }
+  .quartal-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--green);
+  }
+  .quartal-badge {
+    background: var(--green);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85em;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .quartal-badge.q1 { background: #1565c0; }
+  .quartal-badge.q2 { background: #7b1fa2; }
+  .quartal-badge.q3 { background: var(--green); }
+  .quartal-badge.q4 { background: var(--orange); }
+  .quartal-title {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* Material-Karte */
+  .material-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    border-left: 4px solid transparent;
+  }
+  .material-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    border-left-color: var(--green);
+  }
+  .material-card .icon {
+    font-size: 1.8em;
+    flex-shrink: 0;
+    width: 48px;
+    text-align: center;
+  }
+  .material-card .info {
+    flex: 1;
+  }
+  .material-card .title {
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--text);
+  }
+  .material-card .desc {
+    font-size: 0.85em;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .material-card .arrow {
+    color: var(--muted);
+    font-size: 1.2em;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  .material-card:hover .arrow {
+    transform: translateX(4px);
+    color: var(--green);
+  }
+  .material-card.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .material-card .badge-new {
+    background: #ef4444;
+    color: #fff;
+    font-size: 0.65em;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* Info-Box */
+  .info-box {
+    background: var(--green-light);
+    border: 1px solid #a5d6a7;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 28px;
+    font-size: 0.9em;
+    color: #1b5e20;
+  }
+  .info-box strong { color: #0d7a52; }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8em;
+    padding: 20px 16px;
+    border-top: 1px solid #e0e0e0;
+  }
+  footer a { color: var(--green); text-decoration: none; }
+
+  @media (max-width: 480px) {
+    .material-card { padding: 12px 14px; }
+    .material-card .icon { font-size: 1.5em; width: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="logo.png" alt="Lore-Lorentz-Schule" class="logo">
+  <h1>🌿 Umweltschutztechnik</h1>
+  <div class="sub">UTEC 12NC · Interaktive Materialien · 2025/26</div>
+</div>
+
+<div class="container">
+
+  <div class="info-box">
+    <strong>Willkommen!</strong> Hier finden Sie alle interaktiven Lernmaterialien für den UTEC-Unterricht. Tippen Sie auf ein Thema, um loszulegen.
+  </div>
+
+  <!-- ===== Q1: Luftreinhaltung ===== -->
+  <div class="quartal">
+    <div class="quartal-header">
+      <span class="quartal-badge q1">Q1</span>
+      <span class="quartal-title">Luftreinhaltung</span>
+    </div>
+    <div class="material-card disabled">
+      <div class="icon">🌫️</div>
+      <div class="info">
+        <div class="title">Materialien folgen</div>
+        <div class="desc">Emissionen, Immissionen, Grenzwerte</div>
+      </div>
+      <div class="arrow">→</div>
+    </div>
+  </div>
+
+  <!-- ===== Q2: Brennstoffzelle / Elektrolyseur ===== -->
+  <div class="quartal">
+    <div class="quartal-header">
+      <span class="quartal-badge q2">Q2</span>
+      <span class="quartal-title">Brennstoffzelle & Elektrolyseur</span>
+    </div>
+    <a class="material-card" href="lernliste_q3_h2.html">
+      <div class="icon">⚡</div>
+      <div class="info">
+        <div class="title">Lernliste H₂</div>
+        <div class="desc">Elektrolyse, Brennstoffzelle, Wirkungsgrade</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+  </div>
+
+  <!-- ===== Q3: Abfallwirtschaft ===== -->
+  <div class="quartal">
+    <div class="quartal-header">
+      <span class="quartal-badge q3">Q3</span>
+      <span class="quartal-title">Abfallwirtschaft</span>
+    </div>
+    <a class="material-card" href="lernliste_abfallwirtschaft.html">
+      <div class="icon">📋</div>
+      <div class="info">
+        <div class="title">Lernliste Abfallwirtschaft</div>
+        <div class="desc">KrWG, Abfallhierarchie, MVA, Deponien</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+    <a class="material-card" href="aluminiumgewinnung.html">
+      <div class="icon">🏭</div>
+      <div class="info">
+        <div class="title">Aluminiumgewinnung</div>
+        <div class="desc">Bayer-Verfahren · Schmelzflusselektrolyse · Energiebilanz</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+    <a class="material-card" href="aluminium_recycling.html">
+      <div class="icon">♻️</div>
+      <div class="info">
+        <div class="title">Aluminium-Recycling <span class="badge-new">NEU</span></div>
+        <div class="desc">Energiebilanz · Trennverfahren · Wirbelstromabscheider · Quiz</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+  </div>
+
+  <!-- ===== Q4: Platzhalter ===== -->
+  <div class="quartal">
+    <div class="quartal-header">
+      <span class="quartal-badge q4">Q4</span>
+      <span class="quartal-title">Energieumwandlung</span>
+    </div>
+    <div class="material-card disabled">
+      <div class="icon">☀️</div>
+      <div class="info">
+        <div class="title">Materialien folgen</div>
+        <div class="desc">PV, Wind, Geothermie, Wasserstoff</div>
+      </div>
+      <div class="arrow">→</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Lore-Lorentz-Schule · Berufskolleg der Stadt Düsseldorf · UTEC 12NC · 2025/26<br>
+  <a href="https://lore-lorentz.de">lore-lorentz.de</a>
+</footer>
+
+</body>
+</html>
