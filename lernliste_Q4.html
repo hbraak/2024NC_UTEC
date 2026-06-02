@@ -233,7 +233,7 @@
 
 <header>
   <h1>&#9851;&#65039; Lernliste Klausur Q4 – Recycling & Kreislaufwirtschaft</h1>
-  <p>UTEC 12NC &middot; 04.06.2026 &middot; 135 Minuten</p>
+  <p>UTEC 12NC &middot; 03.06.2026 &middot; 135 Minuten</p>
 </header>
 
 <div class="progress-container">
@@ -253,23 +253,20 @@
   <strong>Themen:</strong> Aluminium-Recycling, Energiebilanz Primaer vs. Sekundaer, Trennverfahren, chemisches Recycling (Pyrolyse, Solvolyse, Vergasung), Massenbilanzansatz, Quellenkritik, Kreislaufwirtschaft
 </div>
 
-<!-- Section 1: Aluminium-Recycling -->
+<!-- Section 1: Aluminium-Recycling & Trennverfahren -->
 <section>
   <div class="section-header" onclick="toggleSection(this)">
-    <h2>&#9851;&#65039; Aluminium-Recycling & Energiebilanz</h2>
+    <h2>&#9851;&#65039; Aluminium-Recycling & Trennverfahren</h2>
     <div style="display:flex;align-items:center;gap:0.8rem">
       <span class="section-progress"></span>
       <span class="arrow">&#9660;</span>
     </div>
   </div>
   <div class="section-body">
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Primaer- vs. Sekundaeraluminium unterscheiden</b> – Primaer: Bauxit &rarr; Bayer-Verfahren &rarr; Schmelzflusselektrolyse (15 kWh/kg). Sekundaer: Aluschrott &rarr; Einschmelzen bei 660 &deg;C (0,7 kWh/kg). <b>95,3 % Energieeinsparung</b>.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Bayer-Verfahren (Wiederholung)</b> – Bauxit + NaOH &rarr; Al(OH)&#8323; loest sich (Aluminium ist amphoter), Eisenoxide bleiben als Rotschlamm zurueck &rarr; Al&#8322;O&#8323;</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Schmelzflusselektrolyse (Wiederholung)</b> – Al&#8322;O&#8323; in Kryolith (Na&#8323;AlF&#8326;) bei 960 &deg;C. Kryolith senkt Schmelzpunkt von >2050 &deg;C auf ~960 &deg;C. Kathode: Al&#179;&#8314; + 3e&#8315; &rarr; Al. Anoden (Graphit) verbrennen zu CO&#8322;.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Energieeinsparung berechnen koennen</b> – Bei x kg Aluminium: Einsparung = x &times; (15,0 &minus; 0,7) kWh = x &times; 14,3 kWh. CO&#8322;-Einsparung = Einsparung &times; CO&#8322;-Faktor (DE: ~400 g/kWh).</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Vergleichstabelle kennen</b> – Primaer vs. Recycling: Rohstoff, Bayer-Verfahren (entfaellt), Rotschlamm (kein), Elektrolyse (entfaellt), Temperatur (960 vs. 660 &deg;C), Energie, CO&#8322;.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Vorteile des Alu-Recyclings</b> – Kein Rotschlamm, keine Elektrolyse, keine Anodenverbrauch, 95 % weniger Energie, weniger CO&#8322;, Schonung der Bauxit-Vorkommen.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Primaer- vs. Sekundaeraluminium</b> – Primaer: Bauxit &rarr; Bayer-Verfahren &rarr; Schmelzflusselektrolyse (15 kWh/kg). Sekundaer: Aluschrott &rarr; Einschmelzen bei 660 &deg;C (0,7 kWh/kg). Vorteile Recycling: kein Rotschlamm, keine Elektrolyse, <b>95 % weniger Energie</b>.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Energieeinsparung berechnen</b> – <span class="formula">Einsparung = m &times; 14,3 kWh/kg</span>. CO&#8322;-Einsparung = Einsparung &times; Emissionsfaktor (DE: ~400 g/kWh). Beispiel: 5 t &rarr; 71.500 kWh &rarr; 28,6 t CO&#8322;.</div></div>
     <div class="check-item"><input type="checkbox"><div class="item-text"><b>Downcycling-Problem</b> – Verschiedene Alu-Legierungen vermischen sich beim Einschmelzen &rarr; schlechtere Eigenschaften. Loesung: sortenreine Sammlung.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Trennverfahren zuordnen</b> – <em>Magnetabscheider</em>: ferromagn. Metalle (Eisen, Stahl, Nickel). <em>Wirbelstromabscheider</em>: leitfaehige Nichteisenmetalle (Alu, Kupfer) &ndash; Prinzip: Induktion + Lenz'sche Regel. <em>Dichtesortierung</em>: Kunststoff, Glas, Papier. <em>NIR</em>: Kunststoffsorten per Infrarot-Spektroskopie.</div></div>
 
     <details class="self-test">
       <summary>&#129514; Selbsttest: Energiebilanz</summary>
@@ -277,47 +274,13 @@
         <strong>Frage:</strong> Ein Betrieb recycelt 5 Tonnen Aluminium. Berechnen Sie die Energieeinsparung und die CO&#8322;-Einsparung (dt. Strommix: 400 g CO&#8322;/kWh).<br><br>
         <strong>Antwort:</strong><br>
         Einsparung Energie: 5.000 kg &times; 14,3 kWh/kg = <b>71.500 kWh</b><br>
-        CO&#8322;-Einsparung: 71.500 kWh &times; 400 g/kWh = 28.600.000 g = <b>28,6 t CO&#8322;</b><br>
-        Das entspricht ca. 190.667 km Autofahrt (150 g CO&#8322;/km).
-      </div>
-    </details>
-    <details class="self-test">
-      <summary>&#129514; Selbsttest: Warum entfaellt der Rotschlamm?</summary>
-      <div class="answer">
-        <strong>Frage:</strong> Erklaeren Sie, warum beim Aluminium-Recycling kein Rotschlamm entsteht.<br><br>
-        <strong>Antwort:</strong> Rotschlamm entsteht nur beim Bayer-Verfahren, bei dem Bauxit (Erz) in NaOH geloest wird und die unloeslichen Eisenoxide als Rotschlamm zurueckbleiben. Beim Recycling wird bereits fertiges Aluminium eingeschmolzen &ndash; es gibt kein Bauxit, kein Bayer-Verfahren, also keinen Rotschlamm.
+        CO&#8322;-Einsparung: 71.500 kWh &times; 400 g/kWh = 28.600.000 g = <b>28,6 t CO&#8322;</b>
       </div>
     </details>
   </div>
 </section>
 
-<!-- Section 2: Trennverfahren -->
-<section>
-  <div class="section-header" onclick="toggleSection(this)">
-    <h2>&#129522; Trennverfahren beim Recycling</h2>
-    <div style="display:flex;align-items:center;gap:0.8rem">
-      <span class="section-progress"></span>
-      <span class="arrow">&#9660;</span>
-    </div>
-  </div>
-  <div class="section-body">
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Magnetabscheider</b> – Trennt ferromagnetische Metalle (Eisen, Stahl, Nickel). Prinzip: Magnetische Anziehung.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Wirbelstromabscheider</b> – Trennt nicht-ferromagnetische, aber leitfaehige Metalle (Aluminium, Kupfer, Messing). Prinzip: Elektromagnetische Induktion &rarr; Lenz'sche Regel &rarr; abstoßende Wirbelstroeme.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Dichtesortierung</b> – Trennt nach Dichte: Schwimm-Sink-Verfahren, Windsichtung. Fuer Kunststoff, Glas, Papier/Pappe.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>NIR-Sortierung</b> – Nahinfrarot-Spektroskopie erkennt Kunststoffsorten anhand ihres Absorptionsspektrums &rarr; Druckluftduesen blasen das Material gezielt aus.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Materialien zuordnen koennen</b> – Eisenschrott/Stahldosen/Nickel &rarr; Magnet. Aluminium/Kupferkabel/Messing &rarr; Wirbelstrom. Kunststoff/Glas/Papier &rarr; Dichte.</div></div>
-
-    <details class="self-test">
-      <summary>&#129514; Selbsttest: Wirbelstromabscheider</summary>
-      <div class="answer">
-        <strong>Frage:</strong> Erklaeren Sie das physikalische Prinzip des Wirbelstromabscheiders.<br><br>
-        <strong>Antwort:</strong> Ein schnell rotierender Magnetrotor erzeugt ein wechselndes Magnetfeld. In elektrisch leitfaehigen (aber nicht-ferromagnetischen) Metallen wie Aluminium werden dadurch Wirbelstroeme induziert. Nach der Lenz'schen Regel erzeugen diese Wirbelstroeme ein Gegenfeld, das das Metallstueck abstoesst und von der Foerderbahn ablenkt. Nicht-leitende Materialien werden nicht beeinflusst.
-      </div>
-    </details>
-  </div>
-</section>
-
-<!-- Section 3: Mechanisches vs. Chemisches Recycling -->
+<!-- Section 2: Mechanisches vs. chemisches Recycling -->
 <section>
   <div class="section-header" onclick="toggleSection(this)">
     <h2>&#9878;&#65039; Mechanisches vs. chemisches Recycling</h2>
@@ -327,124 +290,77 @@
     </div>
   </div>
   <div class="section-body">
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Mechanisches Recycling definieren</b> – Polymerketten bleiben erhalten. Material wird sortiert, geschreddert, gewaschen, eingeschmolzen, neu granuliert. Polymer-zu-Polymer-Ausbeute: 80&ndash;95 %.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Chemisches Recycling definieren</b> – Polymere werden auf molekularer Ebene zerlegt (in Monomere, kuerzere Ketten oder Synthesegas). Auch: rohstoffliches Recycling. Prinzipiell ohne Qualitaetsverlust moeglich.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Begriffe unterscheiden</b> – <em>Polymer</em> = Makromolekuel aus vielen Monomeren (z.B. PET). <em>Monomer</em> = Grundbaustein (z.B. Ethylenglykol). <em>Depolymerisation</em> = Rueckfuehrung in Monomere. <em>Cracken</em> = thermische Spaltung langer Ketten.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Vorteile mechanisches Recycling</b> – Weniger Energieeinsatz, hoehere Ausbeute (80&ndash;95 %), etablierte Technologie, vom KrWG als Recycling anerkannt.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Grenzen mechanisches Recycling</b> – Funktioniert nur bei sortenreinem, sauberem Input. Versagt bei Verbundkunststoffen, verschmutzten Polymeren, Mehrschicht-Folien.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Einordnung in die Abfallhierarchie</b> – Mechanisches Recycling = Stufe 3 (Recycling). Chemisches Recycling = umstritten (Stufe 3 oder 4, je nach Verfahren und Auslegung).</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Mechanisches Recycling</b> – Polymerketten bleiben erhalten: sortieren &rarr; schreddern &rarr; waschen &rarr; einschmelzen &rarr; granulieren. Ausbeute: 80&ndash;95 %. Vorteile: weniger Energie, etabliert, KrWG-anerkannt. Grenze: nur bei sortenreinem, sauberem Input.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Chemisches Recycling</b> – Polymere werden auf molekularer Ebene zerlegt (Monomere, kuerzere Ketten oder Synthesegas). Sinnvoll fuer Verbundkunststoffe, verschmutzte Polymere, Mehrschichtfolien. Ausbeute oft &lt; 40 %.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Fachbegriffe</b> – <em>Polymer</em>: Makromolekuel aus Monomeren. <em>Monomer</em>: Grundbaustein. <em>Depolymerisation</em>: Rueckfuehrung in Monomere. <em>Cracken</em>: thermische Spaltung langer Ketten.</div></div>
 
-    <div class="tip">Merksatz: Chemisches Recycling ist <b>komplementaer</b>, nicht konkurrierend zum mechanischen Recycling. Es ist sinnvoll fuer Restströme, die mechanisch nicht recycelbar sind.</div>
+    <div class="tip">Chemisches Recycling ist <b>komplementaer</b>, nicht konkurrierend &ndash; sinnvoll fuer Reststroeme, die mechanisch nicht recycelbar sind.</div>
 
     <details class="self-test">
       <summary>&#129514; Selbsttest: Vergleich</summary>
       <div class="answer">
         <strong>Frage:</strong> Nennen Sie je zwei Vorteile und Nachteile des mechanischen gegenueber dem chemischen Recycling.<br><br>
         <strong>Antwort:</strong><br>
-        <em>Vorteile mechanisch:</em> (1) Deutlich geringerer Energieeinsatz, (2) Polymer-zu-Polymer-Ausbeute 80&ndash;95 % vs. oft &lt;40 % bei chemisch.<br>
-        <em>Nachteile mechanisch:</em> (1) Nur bei sortenreinem, sauberem Material moeglich, (2) Qualitaetsverlust ueber mehrere Recyclingzyklen (Downcycling).
+        <em>Vorteile mechanisch:</em> (1) Deutlich geringerer Energieeinsatz, (2) Ausbeute 80&ndash;95 % vs. oft &lt;40 %.<br>
+        <em>Nachteile mechanisch:</em> (1) Nur bei sortenreinem, sauberem Material, (2) Qualitaetsverlust ueber mehrere Zyklen (Downcycling).
       </div>
     </details>
   </div>
 </section>
 
-<!-- Section 4: Chemisches Recycling – Verfahren -->
+<!-- Section 3: Chemisches Recycling – Die drei Verfahren -->
 <section>
   <div class="section-header" onclick="toggleSection(this)">
-    <h2>&#128293; Chemisches Recycling – Die drei Verfahren</h2>
+    <h2>&#128293; Die drei Verfahren des chemischen Recyclings</h2>
     <div style="display:flex;align-items:center;gap:0.8rem">
       <span class="section-progress"></span>
       <span class="arrow">&#9660;</span>
     </div>
   </div>
   <div class="section-body">
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Pyrolyse / Veroelung</b> – Thermische Spaltung bei 400&ndash;800 &deg;C unter <b>Sauerstoffausschluss</b>. Produkte: Pyrolyseoel (50&ndash;80 %), Pyrolysegas (10&ndash;20 %), Pyrolysekoks (10&ndash;30 %). Input: gemischte Polyolefine (PE, PP), Altreifen.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Pyrolyseoel-Verwertung</b> – Wird in Steamcrackern eingespeist und ersetzt fossiles Naphtha. Daraus entstehen Olefine (Ethen, Propen) fuer neue Polymere.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Solvolyse</b> – Chemische Spaltung durch ein Loesungsmittel. Drei Unterformen: <em>Hydrolyse</em> (mit Wasser), <em>Glykolyse</em> (mit Glykolen), <em>Methanolyse</em> (mit Methanol). Input: PET, Polyamide (Nylon), Polyurethan (PU). <b>Nicht</b> fuer Polyolefine (PE, PP)!</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>PET-Glykolyse als Beispiel</b> – PET + Ethylenglykol &rarr; BHET (Bis-Hydroxyethyl-Terephthalat) bei 180&ndash;240 &deg;C. BHET kann direkt wieder zu PET in Primärqualitaet polymerisiert werden.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Vergasung (Gasifizierung)</b> – Thermische Spaltung bei 800&ndash;1500 &deg;C mit kontrollierter Sauerstoff-/Wasserdampfzufuhr. Output: Synthesegas (H&#8322; + CO). Status: In Europa noch keine Großanlagen in Betrieb.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Effektive Ausbeute kennen</b> – Polymer-zu-Polymer-Ausbeute bei Pyrolyse: oft <b>&lt; 40 %</b>. Vergleich: mechanisches Recycling 80&ndash;95 %.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Schadstoffe bei Pyrolyse</b> – Je nach Input: aromatische KW (Benzol, PAK), halogenierte Verbindungen (bei PVC), Stickstoff-/Schwefelverbindungen, PBDE aus Flammschutzmitteln. Muessen vor Steamcracker-Einspeisung entfernt werden.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Pyrolyse</b> – 400&ndash;800 &deg;C unter Sauerstoffausschluss. Produkte: Pyrolyseoel (50&ndash;80 %), -gas, -koks. Input: gemischte Polyolefine (PE, PP). Pyrolyseoel ersetzt fossiles Naphtha im Steamcracker &rarr; neue Olefine.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Solvolyse</b> – Spaltung durch Loesungsmittel: Hydrolyse (Wasser), Glykolyse (Glykole), Methanolyse (Methanol). Input: PET, Polyamide, PU. Beispiel PET-Glykolyse: PET + Ethylenglykol &rarr; BHET bei 180&ndash;240 &deg;C &rarr; wieder PET in Primärqualitaet. <b>Nicht</b> fuer Polyolefine!</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Vergasung</b> – 800&ndash;1500 &deg;C mit kontrollierter O&#8322;-/Dampfzufuhr &rarr; Synthesegas (H&#8322; + CO). In Europa noch keine Großanlagen.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Verfahren zuordnen koennen</b> – PET-Flaschen &rarr; Solvolyse. Gemischte PE/PP-Folien &rarr; Pyrolyse. PU-Matratzen &rarr; Solvolyse.</div></div>
 
     <details class="self-test">
-      <summary>&#129514; Selbsttest: Verfahren zuordnen</summary>
+      <summary>&#129514; Selbsttest: Zuordnung</summary>
       <div class="answer">
-        <strong>Frage:</strong> Ordnen Sie zu: (a) PET-Flaschen, (b) gemischte PE/PP-Folien, (c) PU-Matratzen. Welches chemische Recyclingverfahren ist jeweils geeignet?<br><br>
-        <strong>Antwort:</strong><br>
-        (a) PET-Flaschen &rarr; <b>Solvolyse</b> (Glykolyse) &ndash; PET hat spaltbare Esterbindungen<br>
-        (b) gemischte PE/PP-Folien &rarr; <b>Pyrolyse</b> &ndash; Polyolefine haben keine spaltbaren Heteroatom-Bindungen<br>
-        (c) PU-Matratzen &rarr; <b>Solvolyse</b> &ndash; PU hat spaltbare Urethanbindungen (Beispiel: Evonik Marl)
-      </div>
-    </details>
-    <details class="self-test">
-      <summary>&#129514; Selbsttest: Wann ist chemisches Recycling sinnvoll?</summary>
-      <div class="answer">
-        <strong>Frage:</strong> Nennen Sie drei Faelle, in denen chemisches Recycling sinnvoll ist, und zwei, in denen es nicht sinnvoll ist.<br><br>
-        <strong>Antwort:</strong><br>
-        <em>Sinnvoll fuer:</em> (1) Verbundkunststoffe/Mehrschichtfolien (mechanisch nicht trennbar), (2) stark verschmutzte Polymere (z.B. medizinische Abfaelle), (3) Polykondensate mit Lebensmittelkontakt-Anforderung (hoechste Reinheit noetig).<br>
-        <em>Nicht sinnvoll fuer:</em> (1) Sortenreine Polyolefine aus dem Pfandsystem (mechanisch effizienter), (2) PET aus dem Flaschenpfand (Bottle-to-Bottle mechanisch etabliert).
+        <strong>Frage:</strong> Warum eignet sich Pyrolyse nicht fuer PET, und Solvolyse nicht fuer Polyolefine?<br><br>
+        <strong>Antwort:</strong> PET hat spaltbare Esterbindungen &rarr; Solvolyse kann diese gezielt aufbrechen und Monomere zurueckgewinnen (effizienter). Polyolefine (PE, PP) bestehen nur aus C-C-Ketten ohne Heteroatom-Bindungen &rarr; Solvolyse kann hier nicht angreifen, daher bleibt nur die thermische Spaltung (Pyrolyse).
       </div>
     </details>
   </div>
 </section>
 
-<!-- Section 5: Massenbilanzansatz -->
+<!-- Section 4: Massenbilanz & Quellenkritik -->
 <section>
   <div class="section-header" onclick="toggleSection(this)">
-    <h2>&#9878;&#65039; Massenbilanzansatz – der Streitpunkt</h2>
+    <h2>&#9878;&#65039; Massenbilanzansatz & Quellenkritik</h2>
     <div style="display:flex;align-items:center;gap:0.8rem">
       <span class="section-progress"></span>
       <span class="arrow">&#9660;</span>
     </div>
   </div>
   <div class="section-body">
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Massenbilanz definieren</b> – Rechnerisches Verfahren: Wird z.B. 10 % Pyrolyseoel + 90 % fossiles Naphtha eingespeist, darf 10 % des Outputs als &bdquo;recycelt&ldquo; ausgewiesen werden &ndash; unabhaengig davon, ob in der einzelnen Polymerkette tatsaechlich Rezyklat-Atome stecken.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Analogie kennen</b> – Wie Oekostrom-Tarife: Ins selbe Stromnetz wird konventionell und regenerativ eingespeist; rechnerisch wird dem Kunden der Oekostrom zugeordnet.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Pro-Argumente (Chemieindustrie)</b> – (1) Technisch unvermeidbar: an C-Atomen laesst sich Herkunft nicht nachweisen, (2) sinnvolle Investitionsanreize, (3) vergleichbar mit Bio-Methan, Oekostrom.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Contra-Argumente (Umweltverb&auml;nde)</b> – (1) Greenwashing-Anfaelligkeit (Pyrolyseoel koennte verfeuert werden, trotzdem Rezyklatanteil ausgewiesen), (2) Wettbewerbsverzerrung gegenueber echtem mechanischem Recycling, (3) Verbrauchertaeuschung (&bdquo;recycelt&ldquo; suggeriert physische Anwesenheit).</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Rechtliche Lage</b> – EU-Kommission hat noch keine harmonisierte Berechnungsmethode (Stand 2026). Verpackungsverordnung PPWR laesst Spielraum. In DE: VerpackG schliesst chemisches Recycling fuer gesetzliche Recyclingquoten bisher aus.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Massenbilanz erklaeren</b> – Rechnerische Zuordnung: z.B. 10 % Pyrolyseoel + 90 % Naphtha eingespeist &rarr; 10 % des Outputs darf als &bdquo;recycelt&ldquo; ausgewiesen werden. Analogie: Oekostrom-Tarife im selben Netz.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Pro &amp; Contra abwaegen</b> – <em>Pro:</em> technisch unvermeidbar, Investitionsanreize, vergleichbar mit Oekostrom. <em>Contra:</em> Greenwashing-Gefahr, Wettbewerbsverzerrung ggue. mechanischem Recycling, Verbrauchertaeuschung.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Quellen kritisch einordnen</b> – Wer schreibt? Welches Eigeninteresse? Initiative Frosch (Werner & Mertz): pro mechanisch, wirtschaftl. Interesse. BASF ChemCycling: pro chemisch, Investitionsinteresse. Neutral: Fraunhofer UMSICHT, UBA, VDI.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Stellungnahme formulieren (AFB III)</b> – Strukturierte Pro-/Contra-Abwaegung. Nicht schwarz-weiss, sondern differenziert nach Inputmaterial, Energiequelle und regulatorischem Rahmen.</div></div>
+
+    <div class="tip">Die Frage &bdquo;Ist chemisches Recycling Greenwashing oder Game Changer?&ldquo; laesst sich nicht binaer beantworten &ndash; typisches AFB-III-Bewertungsthema!</div>
 
     <details class="self-test">
       <summary>&#129514; Selbsttest: Werbeaussage bewerten</summary>
       <div class="answer">
         <strong>Frage:</strong> Ein Konzern wirbt: &bdquo;Diese Verpackung enthaelt 30 % chemisch recyceltes Material.&ldquo; Ordnen Sie diese Aussage ein.<br><br>
-        <strong>Antwort:</strong> Die 30 % basieren vermutlich auf dem <b>Massenbilanzansatz</b> &ndash; physisch stecken moeglicherweise keine Rezyklat-Molekuele in genau dieser Verpackung. Die Aussage ist nicht falsch, aber irrefuehrend: Der Verbraucher versteht &bdquo;enthaelt&ldquo; als physische Anwesenheit. Zusaetzlich ist zu pruefen: (1) Welches Polymer? Bei Polyolefinen ist die Pyrolyse-Ausbeute gering. (2) Die Gesamtenergiebilanz ist deutlich schlechter als bei mechanischem Recycling. (3) In Deutschland zaehlt chemisches Recycling nicht fuer die gesetzlichen Recyclingquoten.
+        <strong>Antwort:</strong> Die 30 % basieren vermutlich auf dem <b>Massenbilanzansatz</b> &ndash; physisch stecken moeglicherweise keine Rezyklat-Molekuele in dieser Verpackung. Die Aussage ist nicht falsch, aber irrefuehrend. Zu pruefen: (1) Welches Polymer? (2) Gesamtenergiebilanz? (3) In DE zaehlt chem. Recycling nicht fuer gesetzliche Recyclingquoten.
       </div>
     </details>
   </div>
 </section>
 
-<!-- Section 6: Quellenkritik -->
-<section>
-  <div class="section-header" onclick="toggleSection(this)">
-    <h2>&#128270; Quellenkritik & Bewertung</h2>
-    <div style="display:flex;align-items:center;gap:0.8rem">
-      <span class="section-progress"></span>
-      <span class="arrow">&#9660;</span>
-    </div>
-  </div>
-  <div class="section-body">
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Quellenkritik anwenden koennen</b> – Bei jedem Text fragen: Wer hat das geschrieben? Welches Eigeninteresse besteht? Ist die Quelle neutral oder ein Positionspapier?</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Initiative Frosch einordnen</b> – Plattform von Werner & Mertz (Frosch-Reiniger). Setzt auf mechanisches Recycling als Geschaeftsmodell &rarr; wirtschaftliches Eigeninteresse an Kritik am chemischen Recycling. Argumente pruefen, nicht einfach uebernehmen.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>BASF ChemCycling einordnen</b> – Industrie-PR: zeigt Verfahrenstechnik anschaulich, verschweigt aber Energieaufwand und Massenbilanz-Problematik. Eigeninteresse: Investitionen in Pyrolyse muessen sich rechnen.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Neutrale Quellen benennen koennen</b> – Fraunhofer UMSICHT, UBA (Umweltbundesamt), TU Dresden (Prof. Dornack), BKV/Conversio-Studie, VDI. Diese haben geringeres Eigeninteresse als Industrie oder NGOs.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Stellungnahme formulieren koennen (AFB III)</b> – Pro-/Contra-Abwaegung mit Bezug auf: (1) Inputmaterial, (2) Energiequelle, (3) Verrechnungsmethode, (4) regulatorischen Rahmen. Strukturiert, nicht schwarz-weiss.</div></div>
-
-    <div class="tip">Die Frage &bdquo;Ist chemisches Recycling Greenwashing oder Game Changer?&ldquo; laesst sich nicht binaer beantworten &ndash; typisches AFB-III-Bewertungsthema!</div>
-
-    <details class="self-test">
-      <summary>&#129514; Selbsttest: Quellenkritik</summary>
-      <div class="answer">
-        <strong>Frage:</strong> Sie lesen einen Artikel der Initiative Frosch, der chemisches Recycling als &bdquo;Plastik-zu-Oel-Greenwashing&ldquo; bezeichnet. (a) Warum ist diese Quelle nicht neutral? (b) Sind die Argumente trotzdem gueltig?<br><br>
-        <strong>Antwort:</strong><br>
-        (a) Werner & Mertz (Frosch) setzt auf mechanisches Recycling und hat ein <b>wirtschaftliches Eigeninteresse</b>, dass chemisches Recycling kritisch gesehen wird &ndash; es ist ein Positionspapier, kein neutraler Bericht.<br>
-        (b) Die Argumente (hoher Energieaufwand, geringe Ausbeute bei Polyolefinen) sind <b>fachlich korrekt und durch unabhaengige Quellen bestaetigt</b> (Fraunhofer, UBA, TU Dresden). Eigeninteresse macht Argumente nicht falsch &ndash; aber man muss sie unabhaengig pruefen.
-      </div>
-    </details>
-  </div>
-</section>
-
-<!-- Section 7: Kreislaufwirtschaft in der Praxis -->
+<!-- Section 5: Kreislaufwirtschaft in der Praxis -->
 <section>
   <div class="section-header" onclick="toggleSection(this)">
     <h2>&#128256; Kreislaufwirtschaft in der Praxis</h2>
@@ -454,21 +370,20 @@
     </div>
   </div>
   <div class="section-body">
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Abfallhierarchie (Wiederholung)</b> – 5 Stufen nach &sect; 6 KrWG: 1. Vermeidung &rarr; 2. Vorbereitung zur Wiederverwendung &rarr; 3. Recycling &rarr; 4. Sonstige Verwertung (energetisch) &rarr; 5. Beseitigung</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Produkt-Autopsie</b> – Methode zur Analyse eines Produkts: Aus welchen Materialien besteht es? Woher kommen die Rohstoffe? Wie wurde es hergestellt? Kann es recycelt werden? Welche Umweltauswirkungen hat es?</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Werner & Mertz als Best Practice</b> – PET-Flaschen aus 100 % Rezyklat (teils aus Gelbem Sack), PP-Verschluesse aus Rezyklat, HDPE-Flaschen aus Rezyklat. Zeigt: sortenreines mechanisches Recycling funktioniert grosstechnisch.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Zahlen zur Einordnung</b> – Chemisches Recycling in DE: ~30,2 kt/a (ca. 1,2 % des stofflichen Kunststoff-Recyclings). Mechanisches Recycling: 2,44 Mio. t/a. Europa gesamt: 18 Anlagen, 289 kt/a.</div></div>
-    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Verpackungsdesign fuer Recycling</b> – Sortenreine Materialien verwenden, Verbunde vermeiden, dunkle Farben vermeiden (NIR-Erkennung), Etiketten leicht abloesbar, Recycling-Hinweise aufdrucken.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Abfallhierarchie anwenden (Wdh.)</b> – 5 Stufen &sect; 6 KrWG: Vermeidung &rarr; Wiederverwendung &rarr; Recycling &rarr; Sonstige Verwertung &rarr; Beseitigung. Beispiele zuordnen koennen (MVA = Stufe 4, Unverpackt-Laden = Stufe 1).</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Produkt-Autopsie</b> – Materialzusammensetzung &rarr; Rohstoffherkunft &rarr; Herstellungsweise &rarr; Recycelbarkeit &rarr; Umweltauswirkungen analysieren koennen.</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Best Practice: Werner & Mertz</b> – PET-Flaschen aus 100 % Rezyklat (teils Gelber Sack). Zeigt: sortenreines mechanisches Recycling funktioniert grosstechnisch. Aber: wirtschaftl. Eigeninteresse beachten (Quellenkritik!).</div></div>
+    <div class="check-item"><input type="checkbox"><div class="item-text"><b>Design for Recycling</b> – Sortenreine Materialien, Verbunde vermeiden, dunkle Farben vermeiden (NIR!), Etiketten leicht abloesbar.</div></div>
 
     <details class="self-test">
       <summary>&#129514; Selbsttest: Abfallhierarchie</summary>
       <div class="answer">
-        <strong>Frage:</strong> Ordnen Sie die folgenden Maßnahmen in die Abfallhierarchie ein: (a) PET-Flasche wird eingeschmolzen und zu neuer Flasche, (b) Restmuell wird in MVA verbrannt, (c) Unverpackt-Laden, (d) Altes Marmeladenglas als Aufbewahrungsgefaess.<br><br>
+        <strong>Frage:</strong> Ordnen Sie ein: (a) PET-Flasche &rarr; neue Flasche, (b) Restmuell in MVA, (c) Unverpackt-Laden, (d) Marmeladenglas als Aufbewahrung.<br><br>
         <strong>Antwort:</strong><br>
         (a) Stufe 3 &ndash; Recycling<br>
-        (b) Stufe 4 &ndash; Sonstige (energetische) Verwertung<br>
+        (b) Stufe 4 &ndash; Energetische Verwertung<br>
         (c) Stufe 1 &ndash; Vermeidung<br>
-        (d) Stufe 2 &ndash; Vorbereitung zur Wiederverwendung
+        (d) Stufe 2 &ndash; Wiederverwendung
       </div>
     </details>
   </div>
@@ -478,11 +393,11 @@
 
 <footer>
   <a href="index.html" style="color:#e65100;text-decoration:none;font-weight:600;">&#127968; Zurueck zur Uebersicht</a><br>
-  Lore-Lorentz-Schule &middot; UTEC 12NC &middot; Schuljahr 2025/26 &middot; Klausur am 04.06.2026
+  Lore-Lorentz-Schule &middot; UTEC 12NC &middot; Schuljahr 2025/26 &middot; Klausur am 03.06.2026
 </footer>
 
 <script>
-const STORAGE_KEY = 'lernliste-recycling-q4-12nc';
+const STORAGE_KEY = 'lernliste-recycling-q4-12nc-v2';
 
 function saveState() {
   const boxes = document.querySelectorAll('.check-item input[type="checkbox"]');
